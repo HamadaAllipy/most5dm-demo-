@@ -1,0 +1,2146 @@
+{
+  "id": null,
+  "index": null,
+  "title_app_bar": "أختر القسم",
+  "name": "كل التصنيفات",
+  "hintSearch": "أبحث في القسم...",
+  "items": [
+    {
+      "index": 0,
+      "id": 1,
+      "title_app_bar": "أختر القسم",
+      "hintSearch": "أبحث في القسم...",
+      "name": "سيارات ",
+      "path_icon": "assets/icon/cars.svg",
+      "items": [
+        {
+          "title_app_bar": "النوع",
+          "name": "سيارات للبيع",
+          "hintSearch": "أختر نوع السيارة...",
+          "items": [
+            {
+              "hintSearch": "اختر الفئة...",
+              "title_app_bar": "الفئة",
+              "name": "اوبل",
+              "items": [
+                {
+                  "hintSearch": "اختر سنة الصنع...",
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "hintSearch": "اختر الحالة...",
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "hintSearch": "اختر كيلومترات...",
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "hintSearch": "اختر نوع ناقل الحركة...",
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "hintSearch": "اختر نوع الوقود...",
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "end" : true,
+                                  "items": [
+                                    {
+                                      "hintSearch": "اختر الفئة...",
+                                      "name": "بنزين",
+                                      "collection": [
+                                        {
+                                          "title_en": "section",
+                                          "title_ar": "القسم",
+                                          "data": "سيارات"
+                                        },
+                                        {
+                                          "title_en": "Subsection",
+                                          "title_ar": "القسم الفرعي",
+                                          "data": "سيارات للبيع"
+                                        },
+                                        {
+                                          "title_en": "Type",
+                                          "title_ar": "النوع",
+                                          "data": "اوبل"
+                                        },
+                                        {
+                                          "title_en": "Category",
+                                          "title_ar": "الفئة",
+                                          "data": "GT"
+                                        },
+                                        {
+                                          "title_en": "made_year",
+                                          "title_ar": "سنة الصنع",
+                                          "data": "2022"
+                                        },
+                                        {
+                                          "title_en": "Case",
+                                          "title_ar": "الحالة",
+                                          "data": "مستعمل"
+                                        },
+                                        {
+                                          "title_en": "kilometers",
+                                          "title_ar": "الكيلومترات",
+                                          "data": "0"
+                                        },
+                                        {
+                                          "title_en": "transmission_type",
+                                          "title_ar": "نوع ناقل الحركة",
+                                          "data": "اوتوماتيك"
+                                        },
+                                        {
+                                          "title_en": "fuel_type",
+                                          "title_ar": "نوع الوقود",
+                                          "data": "بنزين"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "أودي",
+              "items": []
+            },
+            {
+              "name": "إنفينيتي",
+              "items": []
+            },
+            {
+              "name": "استون مارتن",
+              "items": []
+            },
+            {
+              "name": "اكيورا",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "الفا روميو",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "ام جي",
+              "items": []
+            },
+            {
+              "name": "ايران خودرو",
+              "items": []
+            },
+            {
+              "name": "ايسوزو",
+              "items": []
+            },
+            {
+              "name": "ايفيكو",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "باجاني",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "بايك",
+              "items": []
+            },
+            {
+              "name": "برايفت",
+              "items": []
+            },
+            {
+              "name": "برتون",
+              "items": []
+            },
+            {
+              "name": "بريليانس",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "بنتلي",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "بورجوارد",
+              "items": []
+            },
+            {
+              "name": "بورش",
+              "items": []
+            },
+            {
+              "name": "بوغاتي",
+              "items": []
+            },
+            {
+              "name": "بونتياك",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "بويك",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "بي ام دبليو",
+              "items": []
+            },
+            {
+              "name": "بي واي دي",
+              "items": []
+            },
+            {
+              "name": "بيجو",
+              "items": []
+            },
+            {
+              "name": "تاتا",
+              "items": []
+            },
+            {
+              "name": "تويوتا",
+              "items": []
+            },
+            {
+              "name": "تيسلا",
+              "items": []
+            },
+            {
+              "name": "جاك",
+              "items": []
+            },
+            {
+              "name": "جاكوار",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "جريت وول",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "جي أيه سي",
+              "items": []
+            },
+            {
+              "name": "جي ام سي",
+              "items": []
+            },
+            {
+              "name": "جيب",
+              "items": []
+            },
+            {
+              "name": "جيلي",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "دايهاتسو",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "دايو",
+              "items": []
+            },
+            {
+              "name": "دودج",
+              "items": []
+            },
+            {
+              "name": "دي اف ام",
+              "items": []
+            },
+            {
+              "name": "روفر",
+              "items": []
+            }
+          ]
+        },
+        {
+          "title_app_bar": "النوع",
+          "name": "سيارات للايجار",
+          "hintSearch": "أختر نوع السيارة...",
+          "items": [
+            {
+              "hintSearch": "اختر الفئة...",
+              "title_app_bar": "الفئة",
+              "name": "اوبل",
+              "items": [
+                {
+                  "hintSearch": "اختر سنة الصنع...",
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "hintSearch": "اختر الحالة...",
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "hintSearch": "اختر كيلومترات...",
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "hintSearch": "اختر نوع ناقل الحركة...",
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "hintSearch": "اختر نوع الوقود...",
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "end" : true,
+                                  "items": [
+                                    {
+                                      "hintSearch": "اختر الفئة...",
+                                      "name": "بنزين",
+                                      "collection": [
+                                        {
+                                          "title_en": "section",
+                                          "title_ar": "القسم",
+                                          "data": "سيارات"
+                                        },
+                                        {
+                                          "title_en": "Subsection",
+                                          "title_ar": "القسم الفرعي",
+                                          "data": "سيارات للايجار"
+                                        },
+                                        {
+                                          "title_en": "Type",
+                                          "title_ar": "النوع",
+                                          "data": "اوبل"
+                                        },
+                                        {
+                                          "title_en": "Category",
+                                          "title_ar": "الفئة",
+                                          "data": "GT"
+                                        },
+                                        {
+                                          "title_en": "made_year",
+                                          "title_ar": "سنة الصنع",
+                                          "data": "2022"
+                                        },
+                                        {
+                                          "title_en": "Case",
+                                          "title_ar": "الحالة",
+                                          "data": "مستعمل"
+                                        },
+                                        {
+                                          "title_en": "kilometers",
+                                          "title_ar": "الكيلومترات",
+                                          "data": "0"
+                                        },
+                                        {
+                                          "title_en": "transmission_type",
+                                          "title_ar": "نوع ناقل الحركة",
+                                          "data": "اوتوماتيك"
+                                        },
+                                        {
+                                          "title_en": "fuel_type",
+                                          "title_ar": "نوع الوقود",
+                                          "data": "بنزين"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "أودي",
+              "items": []
+            },
+            {
+              "name": "إنفينيتي",
+              "items": []
+            },
+            {
+              "name": "استون مارتن",
+              "items": []
+            },
+            {
+              "name": "اكيورا",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "الفا روميو",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "ام جي",
+              "items": []
+            },
+            {
+              "name": "ايران خودرو",
+              "items": []
+            },
+            {
+              "name": "ايسوزو",
+              "items": []
+            },
+            {
+              "name": "ايفيكو",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "باجاني",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "بايك",
+              "items": []
+            },
+            {
+              "name": "برايفت",
+              "items": []
+            },
+            {
+              "name": "برتون",
+              "items": []
+            },
+            {
+              "name": "بريليانس",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "بنتلي",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "بورجوارد",
+              "items": []
+            },
+            {
+              "name": "بورش",
+              "items": []
+            },
+            {
+              "name": "بوغاتي",
+              "items": []
+            },
+            {
+              "name": "بونتياك",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "بويك",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "بي ام دبليو",
+              "items": []
+            },
+            {
+              "name": "بي واي دي",
+              "items": []
+            },
+            {
+              "name": "بيجو",
+              "items": []
+            },
+            {
+              "name": "تاتا",
+              "items": []
+            },
+            {
+              "name": "تويوتا",
+              "items": []
+            },
+            {
+              "name": "تيسلا",
+              "items": []
+            },
+            {
+              "name": "جاك",
+              "items": []
+            },
+            {
+              "name": "جاكوار",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "جريت وول",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "جي أيه سي",
+              "items": []
+            },
+            {
+              "name": "جي ام سي",
+              "items": []
+            },
+            {
+              "name": "جيب",
+              "items": []
+            },
+            {
+              "name": "جيلي",
+              "items": []
+            },
+            {
+              "title_app_bar": "الفئة",
+              "name": "دايهاتسو",
+              "items": [
+                {
+                  "title_app_bar": "سنة الصنع",
+                  "name": "GT",
+                  "items": [
+                    {
+                      "title_app_bar": "الحالة",
+                      "name": "2022",
+                      "items": [
+                        {
+                          "title_app_bar": "الكيلومترات",
+                          "name": "مستعمل",
+                          "items": [
+                            {
+                              "title_app_bar": "نوع ناقل الحركة",
+                              "name": "0",
+                              "items": [
+                                {
+                                  "title_app_bar": "نوع الوقود",
+                                  "name": "اوتوماتيك",
+                                  "items": [
+                                    {
+                                      "name": "بنزين",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "ديزل",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "كهربائي",
+                                      "items": []
+                                    },
+                                    {
+                                      "name": "هايبرد - plug in",
+                                      "items": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "name": "يدوي - عادي",
+                                  "items": []
+                                }
+                              ]
+                            },
+                            {
+                              "name": "1 - 9,999",
+                              "items": []
+                            },
+                            {
+                              "name": "10,000 - 19,999",
+                              "items": []
+                            },
+                            {
+                              "name": "20,000 - 29,999",
+                              "items": []
+                            },
+                            {
+                              "name": "30,000 - 39,999",
+                              "items": []
+                            }
+                          ]
+                        },
+                        {
+                          "name": "جديد",
+                          "items": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2021",
+                      "items": []
+                    },
+                    {
+                      "name": "2020",
+                      "items": []
+                    },
+                    {
+                      "name": "2019",
+                      "items": []
+                    },
+                    {
+                      "name": "2018",
+                      "items": []
+                    }
+                  ]
+                },
+                {
+                  "name": "اجيلا",
+                  "items": []
+                },
+                {
+                  "name": "استرا",
+                  "items": []
+                },
+                {
+                  "name": "أسكونا",
+                  "items": []
+                },
+                {
+                  "name": "أميرال",
+                  "items": []
+                }
+              ]
+            },
+            {
+              "name": "دايو",
+              "items": []
+            },
+            {
+              "name": "دودج",
+              "items": []
+            },
+            {
+              "name": "دي اف ام",
+              "items": []
+            },
+            {
+              "name": "روفر",
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "موتسيكلات للبيع",
+          "items": []
+        },
+        {
+          "name": "لوحات سارات مميزة",
+          "items": []
+        },
+        {
+          "name": "قطع غيار واكسسوارات",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "id": 2,
+      "name": "موبايل ",
+      "title_app_bar": null,
+      "hintSearch": "ماذا تريد...",
+      "path_icon": "assets/icon/mobile.svg",
+      "items": [
+        {
+          "name": "موبايل"
+        },
+        {
+          "name": "تابلت"
+        },
+        {
+          "name": "ارقام هواتف مميزة"
+        },
+        {
+          "name": "اكسسوارات موبايل تابلت"
+        },
+        {
+          "name": "موبايل - تابلت اخري"
+        },
+        {
+          "name": "صيانة موبايل - تابلت"
+        },
+        {
+          "name": "التكنولوجية القابلة للارتداء"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "id": 3,
+      "name": "اجهزة لوحية",
+      "path_icon": "assets/icon/tablet.svg"
+    },
+    {
+      "index": 3,
+      "id": 4,
+      "name": "لابتوب",
+      "path_icon": "assets/icon/laptop.svg"
+    },
+    {
+      "index": 4,
+      "id": 5,
+      "name": "كومبيوتر مكتبي",
+      "path_icon": "assets/icon/computer.svg"
+    },
+    {
+      "index": 5,
+      "id": 6,
+      "name": "ميكفات",
+      "path_icon": "assets/icon/air_cond.svg"
+    },
+    {
+      "index": 6,
+      "id": 7,
+      "name": "اجهزة منزلية كبيرة",
+      "path_icon": "assets/icon/home.svg"
+    },
+    {
+      "index": 7,
+      "id": 8,
+      "name": "اجهزة منزلية صغيرة",
+      "path_icon": "assets/icon/home.svg"
+    },
+    {
+      "index": 8,
+      "id": 9,
+      "name": "كاميرات",
+      "path_icon": "assets/icon/camera.svg"
+    },
+    {
+      "index": 9,
+      "id": 10,
+      "name": "تلفزيونات",
+      "path_icon": "assets/icon/tv.svg"
+    },
+    {
+      "index": 10,
+      "id": 11,
+      "name": "العاب الكترونية",
+      "path_icon": "assets/icon/video_game.svg"
+    },
+    {
+      "index": 11,
+      "id": 12,
+      "name": "مكائن القهوة",
+      "path_icon": "assets/icon/coffee.svg"
+    },
+    {
+      "index": 12,
+      "id": 13,
+      "name": "قوراب",
+      "path_icon": "assets/icon/boats.svg"
+    },
+    {
+      "index": 13,
+      "id": 14,
+      "name": "عدد وادوات",
+      "path_icon": "assets/icon/tools.svg"
+    },
+    {
+      "index": 14,
+      "id": 15,
+      "name": "معدات رياضية",
+      "path_icon": "assets/icon/cup.svg"
+    },
+    {
+      "index": 15,
+      "id": 16,
+      "name": "اثاث",
+      "path_icon": "assets/icon/furniture.svg"
+    },
+    {
+      "index": 16,
+      "id": 17,
+      "name": "معدات صناعية",
+      "path_icon": "assets/icon/tools.svg"
+    },
+    {
+      "index": 17,
+      "id": 18,
+      "name": "اجهزة طبية",
+      "path_icon": "assets/icon/medical.svg"
+    },
+    {
+      "index": 18,
+      "id": 19,
+      "name": "مقتنيات ثمينة",
+      "path_icon": "assets/icon/dollar.svg"
+    },
+    {
+      "index": 19,
+      "id": 20,
+      "name": "ثلاجات",
+      "path_icon": "assets/icon/fridge.svg",
+      "items" : [
+        {
+          "title_app_bar": "النوع",
+          "name": ""
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "id": 21,
+      "name": "غسالات",
+      "path_icon": "assets/icon/washing.svg"
+    },
+    {
+      "index": 21,
+      "id": 22,
+      "name": "افران",
+      "path_icon": "assets/icon/oven.svg"
+    },
+    {
+      "index": 22,
+      "id": 23,
+      "name": "دراجات",
+      "path_icon": "assets/icon/bike.svg"
+    },
+    {
+      "index": 23,
+      "id": 24,
+      "name": "طابعات",
+      "path_icon": "assets/icon/printer.svg"
+    }
+  ]
+}

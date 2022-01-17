@@ -1,0 +1,16 @@
+{
+  "status": "True",
+  "message": "login successfully",
+  "data": {
+    "username": "hamada",
+    "phoneNumber": "0523456788",
+    "email": "hamada@example.com",
+    "paymentCard": "123456789",
+    "picture": "images\\Auth\\Default.png",
+    "roles": [
+      "User"
+    ],
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJoYW1hZGEiLCJqdGkiOiI2Njg5ZDYzOC00NGQyLTQ1OGYtODE1OC0wMzUzODcxNDUxNjYiLCJlbWFpbCI6IjA1MjM0NTY3ODgiLCJ1aWQiOiI2NTVlYmQ3OC1mNjViLTQ1ZDUtOGI0Zi0wZmVjNTJjNDc3NDciLCJyb2xlcyI6IlVzZXIiLCJleHAiOjE2NDQ2ODk4NDAsImlzcyI6IlNlY3VyZUFwaSIsImF1ZCI6IlNlY3VyZUFwaVVzZXIifQ.8JbC81-aaSuN87bkBQjzqL4Ceu_B_QQvDI2jEckCGds",
+    "expiresOn": "2022-02-12T18:17:20Z"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": "True",
+  "message": "register has been successfully",
+  "data": {
+    "username": "ahmeddq",
+    "phoneNumber": "0574172161",
+    "password": "123456789",
+    "email": "ahmeddg@gmail.com",
+    "paymentCard": "123456789",
+    "picture": "images\\Auth\\Default.png",
+    "roles": [
+      "User"
+    ],
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhaG1lZGRxIiwianRpIjoiMjNkODIzOGUtMmM5MS00YjgzLWI4MDgtNjE4Y2YzMjk1M2M4IiwiZW1haWwiOiIwNTc0MTcyMTYxIiwidWlkIjoiNWVhYTc2OWEtZDY1Zi00OWQwLTkxZDktMWQ1NTUxMmFjM2NjIiwicm9sZXMiOiJVc2VyIiwiZXhwIjoxNjQ0Njg5NzM4LCJpc3MiOiJTZWN1cmVBcGkiLCJhdWQiOiJTZWN1cmVBcGlVc2VyIn0.Wf5GJY7k1CJ__BSQOpMcNwkvvXY3i2fV3wa7MnWImTE",
+    "expiresOn": "2022-02-12T18:15:38Z"
+  }
+}

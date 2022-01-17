@@ -1,0 +1,22 @@
+{
+  "welcome": "مرحبا",
+  "for_sell_all": "لبيع كل ماهو مستعمل",
+  "phone_number": "* رقم الموبايل",
+  "password": "* كلمة المرور",
+  "login": "تسجيل دخول",
+  "forget_password": "نسيت كلمة المرور",
+  "have_Account": "ليس لديك اي حساب؟",
+  "register_now": "سجل الان",
+  "by_logging": "بتسجيل الدخول، فانك توافق علي",
+  "terms_of_use": "شروط الاستخدام",
+  "full_name": "* الاسم بالكامل",
+  "register": "تسجيل جديد",
+  "email": "البريد الاكتروني",
+  "payment_card": "رقم بطاقة الدفع",
+  "already_have_ac": "بالفعل لديك حساب ؟",
+  "required": " مطلوب",
+  "home": "الرئيسية",
+  "add_ads": "أضف أعلان",
+  "favorite": "المفضلة",
+  "wishes": "الرغبات"
+}

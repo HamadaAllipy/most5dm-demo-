@@ -1,0 +1,24 @@
+{
+  "welcome": "Welcome",
+  "for_sell_all": "for sell all old things",
+  "phone_number": "Phone number",
+  "password": "Password",
+  "login": "Login in",
+  "forget_password": "I forgot the password",
+  "have_Account": "You don't have any account?",
+  "register_now": "Register now",
+  "by_logging": "By logging in, you agree to the",
+  "terms_of_use": "Terms of Use",
+  "full_name": "Full name",
+  "register": "Sign up",
+  "email": "email",
+  "payment_card": "Payment card number",
+  "already_have_ac": "already you have an account",
+  "required": "required",
+  "home": "Home",
+  "add_ads": "Add Ads",
+  "favorite": "Favorite",
+  "wishes": "Wishes",
+  "continue": "Continue"
+
+}
