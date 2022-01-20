@@ -111,12 +111,6 @@ class FinishScreen extends StatelessWidget {
                                 model = CategoriesModel.fromJson(categoriesModel?.items![0]);
                                 break;
                             }
-                            navigateTo(
-                              context: context,
-                              widget: DefaultCategoryScreen(
-                                model: model,
-                              ),
-                            );
                           },
                         );
                       },

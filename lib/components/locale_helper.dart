@@ -5,6 +5,8 @@ import 'package:most5dm/constants/app_locale.dart';
 /// high level function
 
 Locale? localeResolutionCallback(currentLang, supportLang) {
+  print('Language $currentLang');
+  print('Language $supportLang');
   if (currentLang != null) {
     for (Locale locale in supportLang) {
       if (locale.languageCode == currentLang.languageCode) {
@@ -27,4 +29,5 @@ const Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates = [
   AppLocale.delegate,
   GlobalMaterialLocalizations.delegate,
   GlobalWidgetsLocalizations.delegate,
+  GlobalCupertinoLocalizations.delegate,
 ];

@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
-void navigateTo({
-  required BuildContext context,
-  required Widget widget,
-})=> Navigator.push(context, MaterialPageRoute(builder: (context)=>widget));
+class NavigatorComponents{
+  NavigatorComponents._();
+  static void navigateTo({
+    required BuildContext context,
+    required String routeName,
+  })=> Navigator.pushNamed(context, routeName);
 
-void navigateToAndFinish({
-  required BuildContext context,
-  required String routeName,
-}){
-  Navigator.of(context).pushNamedAndRemoveUntil(routeName, (route) => false);
+  static void navigateToAndFinish({
+    required BuildContext context,
+    required String routeName,
+  }){
+    Navigator.of(context).pushNamedAndRemoveUntil(routeName, (route) => false);
+  }
 }
+
+
+

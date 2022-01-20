@@ -10,6 +10,7 @@ class DefaultTextForm extends StatelessWidget {
   final IconData? prefixIcon;
   final FormFieldValidator<String>? formFieldValidator;
   final ValueChanged<String>? onChanged;
+  final BoxConstraints? suffixIconConstraints;
 
 
   const DefaultTextForm({
@@ -22,6 +23,7 @@ class DefaultTextForm extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.onChanged,
+    this.suffixIconConstraints,
   }) : super(key: key);
 
   @override
@@ -33,6 +35,7 @@ class DefaultTextForm extends StatelessWidget {
       validator: formFieldValidator,
       onChanged: onChanged,
       decoration: InputDecoration(
+        suffixIconConstraints: suffixIconConstraints,
         suffixIcon: suffixIcon,
         prefixIcon: Icon(
           prefixIcon,

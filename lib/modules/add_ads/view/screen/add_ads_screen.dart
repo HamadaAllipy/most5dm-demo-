@@ -151,8 +151,8 @@ class AddAdsScreen extends StatelessWidget {
                       ],
                     ),
                     onPressed: () {
-                      navigateTo(
-                          context: context, widget: const AllCategoriesScreen());
+                      // navigateTo(
+                      //     context: context, widget: const AllCategoriesScreen());
                     },
                   ),
                 ),
@@ -285,7 +285,7 @@ class AddAdsScreen extends StatelessWidget {
                       ),
                   TextButton(
                         onPressed: () {
-                          navigateToAndFinish(context: context, routeName: AppString.appLayout);
+                          NavigatorComponents.navigateToAndFinish(context: context, routeName: AppString.appLayout);
                         },
                         child: const Text(
                           'نعم',

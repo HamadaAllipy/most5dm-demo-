@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' show BuildContext;
+import 'package:flutter/material.dart' show BuildContext, TextEditingController;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:most5dm/components/dio_helper.dart';
 import 'package:most5dm/constants/end_points.dart';
@@ -11,7 +11,6 @@ class AuthCubit extends Cubit<AuthStates> {
 
   bool _valid = false;
   bool empty = true;
-
 
   AuthCubit() : super(InitialAuthState());
 
@@ -26,6 +25,7 @@ class AuthCubit extends Cubit<AuthStates> {
   bool get isHide => _isHide;
 
   bool get valid => _valid;
+
 
   void loginWithPhoneNumber({
     required String phoneNumber,
@@ -42,14 +42,11 @@ class AuthCubit extends Cubit<AuthStates> {
       print('status =${model.status}\n message ${model.message}');
       if (model.status == 'True') {
         emit(LoginSuccessState());
-      }
-      else if (model.status == 'Unauthorized') {
+      } else if (model.status == 'Unauthorized') {
         emit(LoginErrorState(model.message.toString()));
-      }
-      else if (model.status == 'Error') {
+      } else if (model.status == 'Error') {
         emit(LoginErrorState(model.message.toString()));
-      }
-      else {
+      } else {
         print('??????????');
       }
     });
@@ -65,38 +62,44 @@ class AuthCubit extends Cubit<AuthStates> {
   }) async {
     emit(LoadingRegisterState());
     SendRegister sendRegister = SendRegister(
-      username: 'hamada mohamed seif',
-      email: 'hamada.devlop@gmail.com',
-      phoneNumber: '01141403984',
-      paymentCard: '123456789',
-      password: '123456789',
-      confirmPassword: '123456789',
+      username: fullName,
+      email: email,
+      phoneNumber: phoneNumber,
+      paymentCard: paymentCard,
+      password: password,
+      confirmPassword: password,
     );
-    DioHelper.postData(endPoint: REGISTER, data: sendRegister.toJson()).then((
-        value) {
-      emit(RegisterSuccessState());
+    DioHelper.postData(endPoint: REGISTER, data: sendRegister.toJson())
+        .then((value) {
       print(value!.data);
+      RegisterModel registerModel = RegisterModel.fromJson(value.data);
+      if (registerModel.status == 'True') {
+        emit(RegisterSuccessState());
+      } else {
+        emit(RegisterErrorState(registerModel.message.toString()));
+      }
     }).catchError((e) {
       emit(RegisterErrorState(e.toString()));
     });
   }
 
   validation(String value) {
-    if(value.isEmpty){
+    if (value.isEmpty) {
       empty = true;
       emit(fieldIsEmptyState());
-    }
-    else if(value.isNotEmpty){
+    } else if (value.isNotEmpty) {
       empty = false;
-    if(value.startsWith('05')){
-    _valid = true;
-    emit(ValidState());
-    }
-    else{
-    _valid = false;
+      if (value.startsWith('05')) {
+        _valid = true;
+        emit(ValidState());
+        if (value.length > 10) {
+          _valid = false;
+          emit(NotValidState());
+        }
+      } else {
+        _valid = false;
         emit(NotValidState());
       }
     }
-
   }
 }

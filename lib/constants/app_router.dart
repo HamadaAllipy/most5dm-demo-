@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:most5dm/modules/add_ads/viewModel/cubit/add_ads_cubit.dart';
 import 'package:most5dm/modules/auth/view/screen/bank_account_screen.dart';
+import 'package:most5dm/modules/auth/view/screen/login_screen_.dart';
+import 'package:most5dm/modules/auth/view/screen/register_screen_.dart';
 import 'package:most5dm/modules/splash/view/screens/splash_screen.dart';
 import 'package:most5dm/constants/internet_checker.dart';
 import 'package:most5dm/layout/app_cubit.dart';
@@ -12,7 +14,6 @@ import 'package:most5dm/modules/auth/view/screen/login_screen.dart';
 import 'package:most5dm/modules/auth/view/screen/register_screen.dart';
 import 'package:most5dm/modules/categories/categories_screen.dart';
 import 'package:most5dm/components/disconnected_screen.dart';
-import 'package:most5dm/test_screen.dart';
 
 import 'app_string.dart';
 
@@ -45,10 +46,6 @@ class AppRouter {
         return _navigateSplashScreen();
       case AppString.bankAccountScreen:
         return _navigateBankAccountScreen();
-      case 'TestScreen':
-        return MaterialPageRoute(
-          builder: (context) => const TestScreen(),
-        );
     }
   }
 }
@@ -56,13 +53,13 @@ class AppRouter {
 // {1- Login Screen}
 MaterialPageRoute _navigateLoginScreen(){
   return MaterialPageRoute(
-    builder: (BuildContext context) => const LoginScreen(),
+    builder: (BuildContext context) => const LoginScreen_(),
   );
 }
 // {2- register Screen}
 MaterialPageRoute _navigateRegisterScreen(){
   return  MaterialPageRoute(
-    builder: (BuildContext context) => const RegisterScreen(),
+    builder: (BuildContext context) => const RegisterScreen_(),
   );
 }
 // {3- app layout Screen}

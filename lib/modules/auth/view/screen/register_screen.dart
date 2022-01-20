@@ -46,10 +46,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const BuildLogo(),
                 DefaultTextForm(
-                  label: getLang(context, 'full_name'),
+                  label: getLang(context, 'userName'),
                   textEditingController: nameController,
                   prefixIcon: Icons.perm_contact_cal,
                   formFieldValidator: _validation,
+                  onChanged: (value){
+                    if(value.contains(' ')){
+
+                    }
+                  },
                   keyboardType: TextInputType.name,
                 ),
                 const SizedBox(
@@ -113,8 +118,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 BlocConsumer<AuthCubit, AuthStates>(
                   listener: (context, state){
-                    if(state is LoginSuccessState){
-                      navigateToAndFinish(context: context, routeName: AppString.appLayout);
+                    if(state is RegisterSuccessState){
+                      NavigatorComponents.navigateToAndFinish(context: context, routeName: AppString.appLayout);
                     }
                     else if(state is RegisterErrorState){
                       showToast(state.error.toString());

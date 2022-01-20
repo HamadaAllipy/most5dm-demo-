@@ -57,6 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               BlocBuilder<AuthCubit, AuthStates>(
                 builder: (context, state) {
+                  var cubit = AuthCubit.get(context);
                   return DefaultTextForm(
                     textEditingController: phoneController,
                     keyboardType: TextInputType.phone,
@@ -66,8 +67,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     onChanged: (value) {
                       AuthCubit.get(context).validation(value.toString());
                     },
-                    suffixIcon:AuthCubit.get(context).empty? null:AuthCubit.get(context).valid ? const Icon(
-                        Icons.done) : const Icon(Icons.clear),
+                    suffixIconConstraints: const BoxConstraints(
+                      maxHeight: 20,
+                    ),
+                    suffixIcon: cubit.empty
+                        ? null
+                        : cubit.valid
+                            ? _buildValidIcon()
+                            : _buildNotValidIcon(),
                   );
                 },
               ),
@@ -88,10 +95,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         cubit.toggleObscure();
                       },
                       icon: Icon(
-                        cubit.isHide ?
-                        Icons.remove_red_eye :
-                        CustomIcon.eye_off,
-                        color: AppColor.defaultColor,),
+                        cubit.isHide
+                            ? Icons.remove_red_eye
+                            : CustomIcon.eye_off,
+                        color: AppColor.defaultColor,
+                      ),
                     ),
                     formFieldValidator: _validation,
                   );
@@ -117,12 +125,13 @@ class _LoginScreenState extends State<LoginScreen> {
               BlocConsumer<AuthCubit, AuthStates>(
                 listener: (context, state) {
                   if (state is LoginSuccessState) {
-                    navigateToAndFinish(
+                    NavigatorComponents.navigateToAndFinish(
                         context: context, routeName: AppString.appLayout);
-                  }
-                  else if (state is LoginErrorState) {
-                    Fluttertoast.showToast(msg: state.error.toString(),
-                      toastLength: Toast.LENGTH_LONG,);
+                  } else if (state is LoginErrorState) {
+                    Fluttertoast.showToast(
+                      msg: state.error.toString(),
+                      toastLength: Toast.LENGTH_LONG,
+                    );
                   }
                 },
                 builder: (context, state) {
@@ -139,13 +148,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             phoneNumber: phoneController.text,
                             password: passwordController.text,
                           );
-                        }
-                        else if (!phoneController.text.startsWith('05')) {
+                        } else if (!phoneController.text.startsWith('05')) {
                           showToast('يجب ان يكون الرقم الهاتف يبدء ب 05');
-
-                        }
-                        else if(phoneController.text.length != 10){
-                          showToast('يجب ان يكون الرقم الهاتف مكون من ١٠ ارقام ');
+                        } else if (phoneController.text.length != 10) {
+                          showToast(
+                              'يجب ان يكون الرقم الهاتف مكون من ١٠ ارقام ');
                         }
                       }
                     },
@@ -176,8 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String? _validation(value) {
     if (value!.isNotEmpty) {
       return null;
-    }
-    else {
+    } else {
       return getLang(context, 'required');
     }
   }
@@ -189,4 +195,60 @@ class _LoginScreenState extends State<LoginScreen> {
     passwordController.dispose();
   }
 
+  Widget _buildValidIcon() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 19,
+          height: 19,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColor.defaultColors,
+          ),
+          child: const Icon(
+            Icons.done,
+            color: Colors.white,
+            size: 16,
+          ),
+        ),
+        const SizedBox(
+          width: 12,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildNotValidIcon() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 19,
+          height: 19,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.red,
+          ),
+          child: const Icon(
+            Icons.clear,
+            color: Colors.white,
+            size: 16,
+          ),
+        ),
+        const SizedBox(
+          width: 12,
+        ),
+      ],
+    );
+  }
 }
+
+
+
+
+
+
+

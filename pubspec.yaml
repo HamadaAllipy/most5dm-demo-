@@ -43,6 +43,7 @@ dependencies:
   image_picker: ^0.8.4+4
   device_preview: ^1.0.0
   fluttertoast: ^8.0.8
+  google_fonts_arabic: ^1.1.7
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -94,15 +95,39 @@ flutter:
     - family: CustomIcon
       fonts:
         - asset: assets/icon/CustomIcon.ttf
+
     - family: AppIcons
       fonts:
         - asset: assets/icon/AppIcons.ttf
+
+    - family: DoneIcon
+      fonts:
+        - asset: assets/icon/DoneIcon.ttf
+
     - family: Nunito
       fonts:
         - asset: assets/fonts/Nunito.ttf
+
     - family: Mada
       fonts:
         - asset: assets/fonts/Mada_Regular.ttf
+
+    - family: Roboto
+      fonts:
+        - asset: assets/font_2/Roboto-Regular.ttf
+
+    - family: Hesham
+      fonts:
+        - asset: assets/font_2/Hesham.ttf
+
+    - family: HeshamFostat
+      fonts:
+        - asset: assets/fonts/Hesham_Fostat.ttf
+
+    - family: Helvetica
+      fonts:
+        - asset: assets/font_2/Helvetica.ttf
+
     - family: Tajawal
       fonts:
         - asset: assets/fonts/Tajawal-Black.ttf
@@ -112,6 +137,7 @@ flutter:
         - asset: assets/fonts/Tajawal-Light.ttf
         - asset: assets/fonts/Tajawal-Medium.ttf
         - asset: assets/fonts/Tajawal-Regular.ttf
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

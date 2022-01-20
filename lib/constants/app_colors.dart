@@ -7,7 +7,9 @@ class AppColor{
     // TODO: implement _
     throw UnimplementedError();
   }
-  static Color defaultColor = const Color(0xff2BC27F);
+  static Color defaultColor = const Color(0xFF4EB77C);
+  static Color secondColor = const Color(0xFF1D4D4F);
+  static Color defaultGrey = const Color(0xFFA1A1A1);
   static Color defaultColors = const MaterialColor(
     0xff2BC27F,
     {50: Color(0xFFFFEBEE)},
@@ -16,9 +18,9 @@ class AppColor{
 
 void changeStatusBarColor() {
   SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-        statusBarColor: Colors.white, //
-        statusBarIconBrightness: Brightness.dark// status bar color
+     SystemUiOverlayStyle(
+        statusBarColor: AppColor.secondColor, //
+        statusBarIconBrightness: Brightness.light// status bar color
     ),
   );
 }

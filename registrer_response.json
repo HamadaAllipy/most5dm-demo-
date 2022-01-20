@@ -2,16 +2,16 @@
   "status": "True",
   "message": "register has been successfully",
   "data": {
-    "username": "ahmeddq",
-    "phoneNumber": "0574172161",
+    "username": "hamada888",
+    "phoneNumber": "0524446788",
     "password": "123456789",
-    "email": "ahmeddg@gmail.com",
+    "email": "allipy@gmail.com",
     "paymentCard": "123456789",
     "picture": "images\\Auth\\Default.png",
     "roles": [
       "User"
     ],
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhaG1lZGRxIiwianRpIjoiMjNkODIzOGUtMmM5MS00YjgzLWI4MDgtNjE4Y2YzMjk1M2M4IiwiZW1haWwiOiIwNTc0MTcyMTYxIiwidWlkIjoiNWVhYTc2OWEtZDY1Zi00OWQwLTkxZDktMWQ1NTUxMmFjM2NjIiwicm9sZXMiOiJVc2VyIiwiZXhwIjoxNjQ0Njg5NzM4LCJpc3MiOiJTZWN1cmVBcGkiLCJhdWQiOiJTZWN1cmVBcGlVc2VyIn0.Wf5GJY7k1CJ__BSQOpMcNwkvvXY3i2fV3wa7MnWImTE",
-    "expiresOn": "2022-02-12T18:15:38Z"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJoYW1hZGE4ODgiLCJqdGkiOiI1YTcyNjY4YS1jYjAyLTQzOWMtYjgzZC0zM2UwZjFkNzFjZGMiLCJlbWFpbCI6IjA1MjQ0NDY3ODgiLCJ1aWQiOiIwNTY0YmJhYS1lN2NhLTRjMjAtODI2Mi1kZDhkNTNmNzYwY2IiLCJyb2xlcyI6IlVzZXIiLCJleHAiOjE2NDUwMjEwNDUsImlzcyI6IlNlY3VyZUFwaSIsImF1ZCI6IlNlY3VyZUFwaVVzZXIifQ.34LD2uwBo4eyERFjGc6FI7ON131nDBhm_hz_zhmSDd0",
+    "expiresOn": "2022-02-16T14:17:25Z"
   }
 }
