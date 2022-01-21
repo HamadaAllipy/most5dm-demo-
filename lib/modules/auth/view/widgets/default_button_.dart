@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:most5dm/constants/app_colors.dart';
+import 'package:most5dm/constants/app_values.dart';
 
 class DefaultButton_ extends StatelessWidget {
 
@@ -9,11 +13,13 @@ class DefaultButton_ extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    return MaterialButton(
+    return Platform.isAndroid ? androidButton(context) : iosButton();
+  }
+
+  Widget androidButton(BuildContext context)=> MaterialButton(
       onPressed: onPressed,
       minWidth: double.infinity,
-      height: height * 0.06,
+      height: context.height * 0.06,
       color: AppColor.defaultColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
@@ -23,6 +29,16 @@ class DefaultButton_ extends StatelessWidget {
         ),
       ),
       child: child,
+    );
+  Widget iosButton(){
+    return SizedBox(
+      width: double.infinity,
+      child: CupertinoButton(
+        color: AppColor.defaultColor,
+        child: child,
+        borderRadius: BorderRadius.circular(12),
+        onPressed: onPressed,
+      ),
     );
   }
 }

@@ -55,11 +55,9 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                   ),
                   DefaultTextForm(
                     controller: phoneController,
-                    height: height,
                     keyboardType: TextInputType.phone,
                     text: getLang(context, 'phone_number'),
                     prefixIcon: Icons.phone,
-                    width: width,
                     onChanged: (value) {},
                   ),
                   SizedBox(

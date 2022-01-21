@@ -20,7 +20,9 @@ class LoginModel {
   LoginModel.fromJson(Map<String, dynamic> json){
     status = json['status'];
     message = json['message'];
-    data = DataModel.fromJson(json['data']);
+    if(json['data'] != null){
+      data = DataModel.fromJson(json['data']);
+    }
   }
 
   Map<String, dynamic> toJson()=>{

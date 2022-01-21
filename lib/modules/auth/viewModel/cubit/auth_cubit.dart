@@ -39,7 +39,6 @@ class AuthCubit extends Cubit<AuthStates> {
       data: sendLogin.toJson(),
     ).then((value) {
       LoginModel model = LoginModel.fromJson(value!.data);
-      print('status =${model.status}\n message ${model.message}');
       if (model.status == 'True') {
         emit(LoginSuccessState());
       } else if (model.status == 'Unauthorized') {
@@ -49,6 +48,9 @@ class AuthCubit extends Cubit<AuthStates> {
       } else {
         print('??????????');
       }
+    }).catchError((onError){
+      print('ERROR::: ${onError.toString()}');
+      emit(LoginErrorState(onError.toString()));
     });
   }
 
@@ -76,14 +78,16 @@ class AuthCubit extends Cubit<AuthStates> {
       if (registerModel.status == 'True') {
         emit(RegisterSuccessState());
       } else {
-        emit(RegisterErrorState(registerModel.message.toString()));
+        print('error{}{}{}{}{}');
+        // emit(RegisterErrorState(registerModel.message.toString()));
       }
     }).catchError((e) {
-      emit(RegisterErrorState(e.toString()));
+      print('error{}{}{}{}{}');
+      // emit(RegisterErrorState(e.toString()));
     });
   }
 
-  validation(String value) {
+  validationIcon(String value) {
     if (value.isEmpty) {
       empty = true;
       emit(fieldIsEmptyState());

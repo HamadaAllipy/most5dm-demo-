@@ -37,11 +37,9 @@ class _ScreenThreeState extends State<ScreenThree> {
         ),
         DefaultTextForm(
           controller: phoneController,
-          height: height,
           keyboardType: TextInputType.phone,
           text: getLang(context, 'phone_number'),
           prefixIcon: Icons.phone,
-          width: width,
           onChanged: (value) {},
         ),
         SizedBox(
@@ -49,10 +47,8 @@ class _ScreenThreeState extends State<ScreenThree> {
         ),
         DefaultTextForm(
           controller: rePasswordController,
-          height: height,
           text: getLang(context, 're_password'),
           prefixIcon: Icons.lock,
-          width: width,
         ),
         SizedBox(
           height: height * 0.06,

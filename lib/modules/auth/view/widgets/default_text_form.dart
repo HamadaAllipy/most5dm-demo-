@@ -1,9 +1,11 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:most5dm/constants/app_colors.dart';
 
 class DefaultTextForm extends StatelessWidget {
-  final double height;
-  final double width;
+
   final TextEditingController controller;
   final TextInputType keyboardType;
   final bool obscure;
@@ -12,11 +14,11 @@ class DefaultTextForm extends StatelessWidget {
   final IconData prefixIcon;
   final String text;
   final Widget? suffixIcon;
+  final TextInputAction? textInputAction;
 
-  const DefaultTextForm({Key? key,
-
+  const DefaultTextForm({
+    Key? key,
     required this.controller,
-    required this.height,
     required this.text,
     this.onChanged,
     this.obscure = false,
@@ -24,16 +26,21 @@ class DefaultTextForm extends StatelessWidget {
     required this.prefixIcon,
     this.suffixIcon,
     this.validator,
-    required this.width,
+    this.textInputAction,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    return Platform.isAndroid ? androidTextField() : iosTextField();
+  }
+
+  Widget androidTextField() {
     return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
       obscureText: obscure,
       validator: validator,
+      maxLines: 1,
       onChanged: onChanged,
       decoration: InputDecoration(
         prefixIcon: Icon(
@@ -46,10 +53,12 @@ class DefaultTextForm extends StatelessWidget {
         ),
         suffixIcon: suffixIcon,
         labelText: text,
-        labelStyle: TextStyle(color: AppColor.defaultGrey),
+        labelStyle: TextStyle(color: AppColor.defaultGrey, fontSize: 20, fontWeight: FontWeight.w100),
         floatingLabelStyle: TextStyle(color: AppColor.defaultColor),
         fillColor: Colors.white,
         filled: true,
+        // suffixIconConstraints: BoxConstraints(
+        //   ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide(
@@ -62,17 +71,55 @@ class DefaultTextForm extends StatelessWidget {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Colors.red,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Colors.red,
           ),
         ),
       ),
+    );
+  }
+
+  Widget iosTextField() {
+    return CupertinoTextField(
+      controller: controller,
+      textInputAction: textInputAction,
+      padding: const EdgeInsets.all(16.0),
+      keyboardType: keyboardType,
+      placeholder: text,
+      placeholderStyle: const TextStyle(
+        color: Colors.black38,
+      ),
+      decoration: BoxDecoration(
+        color: CupertinoColors.extraLightBackgroundGray,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: CupertinoColors.lightBackgroundGray,
+          width: 2,
+        ),
+      ),
+      prefix: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(
+            width: 12,
+          ),
+          Icon(
+            prefixIcon,
+          ),
+        ],
+      ),
+      suffix: suffixIcon,
+      onChanged: onChanged,
+      cursorColor: CupertinoColors.activeGreen,
+      obscureText: obscure,
+      obscuringCharacter: '*',
+      maxLines: 1,
     );
   }
 }

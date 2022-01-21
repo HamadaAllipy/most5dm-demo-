@@ -12,7 +12,7 @@ import 'package:most5dm/style/light_theme.dart';
 import 'constants/app_router.dart';
 import 'constants/app_string.dart';
 import 'constants/observer.dart';
-import 'modules/auth/view/screen/login_screen_.dart';
+import 'modules/auth/view/screen/login_screen.dart';
 import 'modules/forget_password/view/screen/enter_new_password_screen.dart';
 import 'modules/forget_password/view/screen/forget_password_screen.dart';
 

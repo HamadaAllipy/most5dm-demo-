@@ -19,7 +19,7 @@ class EnterNewPasswordScreen extends StatefulWidget {
 
 class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
 
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   TextEditingController rePasswordController = TextEditingController();
 
   @override
@@ -54,12 +54,10 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
                     height: height * 0.12,
                   ),
                   DefaultTextForm(
-                    controller: phoneController,
-                    height: height,
+                    controller: passwordController,
                     keyboardType: TextInputType.phone,
-                    text: getLang(context, 'phone_number'),
+                    text: getLang(context, 'password'),
                     prefixIcon: Icons.phone,
-                    width: width,
                     onChanged: (value) {},
                   ),
                   SizedBox(
@@ -67,10 +65,8 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
                   ),
                   DefaultTextForm(
                     controller: rePasswordController,
-                    height: height,
                     text: getLang(context, 're_password'),
                     prefixIcon: Icons.lock,
-                    width: width,
                   ),
                   SizedBox(
                     height: height * 0.06,

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:most5dm/modules/add_ads/viewModel/cubit/add_ads_cubit.dart';
 import 'package:most5dm/modules/auth/view/screen/bank_account_screen.dart';
-import 'package:most5dm/modules/auth/view/screen/login_screen_.dart';
-import 'package:most5dm/modules/auth/view/screen/register_screen_.dart';
+import 'package:most5dm/modules/auth/view/screen/login_screen.dart';
+import 'package:most5dm/modules/auth/view/screen/register_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_code_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_new_password_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_phone_screen.dart';
@@ -14,8 +14,6 @@ import 'package:most5dm/layout/app_cubit.dart';
 import 'package:most5dm/layout/app_layout.dart';
 import 'package:most5dm/layout/app_states.dart';
 import 'package:most5dm/modules/add_ads/view/screen/add_ads_screen.dart';
-import 'package:most5dm/modules/auth/view/screen/login_screen.dart';
-import 'package:most5dm/modules/auth/view/screen/register_screen.dart';
 import 'package:most5dm/modules/categories/categories_screen.dart';
 import 'package:most5dm/components/disconnected_screen.dart';
 
@@ -65,13 +63,13 @@ class AppRouter {
 // {1- Login Screen}
 MaterialPageRoute _navigateLoginScreen(){
   return MaterialPageRoute(
-    builder: (BuildContext context) => const LoginScreen_(),
+    builder: (BuildContext context) => const LoginScreen(),
   );
 }
 // {2- register Screen}
 MaterialPageRoute _navigateRegisterScreen(){
   return  MaterialPageRoute(
-    builder: (BuildContext context) => const RegisterScreen_(),
+    builder: (BuildContext context) => const RegisterScreen(),
   );
 }
 // {3- app layout Screen}

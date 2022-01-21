@@ -1,19 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:most5dm/components/toast.dart';
+import 'package:most5dm/components/background_image.dart';
+import 'package:most5dm/components/custom_status_bar.dart';
 import 'package:most5dm/constants/app_colors.dart';
+import 'package:most5dm/constants/app_icons.dart';
 import 'package:most5dm/constants/app_locale.dart';
 import 'package:most5dm/constants/app_string.dart';
 import 'package:most5dm/constants/app_values.dart';
 import 'package:most5dm/constants/custom_icon_icons.dart';
-import 'package:most5dm/modules/auth/view/widgets/build_logo.dart';
-import 'package:most5dm/modules/auth/view/widgets/default_button.dart';
-import 'package:most5dm/modules/auth/view/widgets/default_text_button.dart';
-import 'package:most5dm/modules/auth/view/widgets/default_text_fromfield.dart';
-import 'package:most5dm/modules/auth/viewModel/cubit/auth_cubit.dart';
-import 'package:most5dm/modules/auth/viewModel/cubit/auth_states.dart';
-import 'package:most5dm/shared/widgets/widgets.dart';
+import 'package:most5dm/modules/auth/view/widgets/default_button_.dart';
+import 'package:most5dm/modules/auth/view/widgets/default_text_form.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -23,135 +19,159 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController paymentController = TextEditingController();
-  var formKey = GlobalKey<FormState>();
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController rePasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
+    return CustomStatusBar(
+      child: BackgroundImage(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: context.width * 0.079),
+          child: SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   width: double.infinity,
-                  height: 40,
+                  height: context.height * 0.016,
                 ),
-                const BuildLogo(),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      getLang(context, 'register'),
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                    SizedBox(
+                      width: context.width * 0.09,
+                    ),
+                    Image.asset(
+                      'assets/images/most5dm.png',
+                      width: context.width * 0.257,
+                      height: context.height * 0.118,
+                      fit: BoxFit.cover,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: context.height * 0.10,
+                ),
                 DefaultTextForm(
-                  label: getLang(context, 'userName'),
-                  textEditingController: nameController,
-                  prefixIcon: Icons.perm_contact_cal,
-                  formFieldValidator: _validation,
-                  onChanged: (value){
-                    if(value.contains(' ')){
-
-                    }
-                  },
                   keyboardType: TextInputType.name,
+                  textInputAction: TextInputAction.next,
+                  controller: userNameController,
+                  text: getLang(context, 'userName'),
+                  prefixIcon: CustomIcon.person,
                 ),
-                const SizedBox(
-                  height: 20.0,
+                SizedBox(
+                  height: context.height * 0.017,
                 ),
                 DefaultTextForm(
-                  label: getLang(context, 'phone_number'),
-                  textEditingController: phoneController,
-                  prefixIcon: Icons.phone,
-                  formFieldValidator: _validation,
                   keyboardType: TextInputType.phone,
+                  textInputAction: TextInputAction.next,
+                  controller: phoneNumberController,
+                  text: getLang(context, 'phone_number'),
+                  prefixIcon: Icons.phone,
                 ),
-                const SizedBox(
-                  height: 20.0,
+                SizedBox(
+                  height: context.height * 0.017,
                 ),
                 DefaultTextForm(
-                  label: getLang(context, 'email'),
-                  textEditingController: emailController,
-                  prefixIcon: Icons.email,
-                  formFieldValidator: _validation,
                   keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
+                  controller: emailController,
+                  text: getLang(context, 'email'),
+                  prefixIcon: Icons.email,
                 ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                BlocBuilder<AuthCubit, AuthStates>(
-                  builder: (context, state) {
-                    var cubit = AuthCubit.get(context);
-                    return DefaultTextForm(
-                      label: getLang(context, 'password'),
-                      textEditingController: passwordController,
-                      prefixIcon: Icons.lock,
-                      formFieldValidator: _validation,
-                      keyboardType: TextInputType.visiblePassword,
-                      obscure: cubit.isHide,
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          cubit.toggleObscure();
-                        },
-                        icon: Icon(
-                          cubit.isHide
-                              ? Icons.remove_red_eye
-                              : CustomIcon.eye_off,
-                          color: AppColor.defaultColor,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                const SizedBox(
-                  height: 20.0,
+                SizedBox(
+                  height: context.height * 0.017,
                 ),
                 DefaultTextForm(
-                  label: getLang(context, 'payment_card'),
-                  textEditingController: paymentController,
-                  prefixIcon: Icons.payment,
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.visiblePassword,
+                  textInputAction: TextInputAction.done,
+                  controller: passwordController,
+                  text: getLang(context, 'password'),
+                  prefixIcon: Icons.lock,
                 ),
-                const SizedBox(
-                  height: 20.0,
+                SizedBox(
+                  height: context.height * 0.017,
                 ),
-                BlocConsumer<AuthCubit, AuthStates>(
-                  listener: (context, state){
-                    if(state is RegisterSuccessState){
-                      NavigatorComponents.navigateToAndFinish(context: context, routeName: AppString.appLayout);
-                    }
-                    else if(state is RegisterErrorState){
-                      showToast(state.error.toString());
-                    }
-                  },
-                  builder: (context , state) {
-                    if(state is LoadingRegisterState){
-                      return const CircularProgressIndicator();
-                    }
-                    return DefaultButton(
-                      text: getLang(context, 'register'),
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          AuthCubit.get(context).register(
-                            fullName: nameController.text,
-                            phoneNumber: phoneController.text,
-                            email: emailController.text,
-                            password: passwordController.text,
-                            confirmPassword: passwordController.text,
-                            paymentCard: paymentController.text,
-                          );
-                        } else {
-                          print('Not validate');
-                        }
-                      },
-                    );
-                  }
+                DefaultTextForm(
+                  textInputAction: TextInputAction.done,
+                  keyboardType: TextInputType.visiblePassword,
+                  controller: rePasswordController,
+                  text: getLang(context, 're_password'),
+                  prefixIcon: Icons.lock,
                 ),
-                DefaultTextButton(
-                  text: getLang(context, 'already_have_ac'),
-                  textButton: getLang(context, 'login'),
+                SizedBox(
+                  height: context.height * 0.017,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: context.width * 0.02,
+                    ),
+                    SizedBox(
+                      width: 18,
+                      height: 18,
+                      child: Checkbox(
+                        value: true,
+                        activeColor: AppColor.defaultGrey,
+                        onChanged: (value) {
+                          print(value);
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 11,
+                    ),
+                    Text(
+                      getLang(context, 'terms_of_use'),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: context.height * 0.03,
+                ),
+                DefaultButton_(
                   onPressed: () {},
+                  child: Text(
+                    getLang(context, 'login'),
+                    style: Theme.of(context).textTheme.button,
+                  ),
+                ),
+                SizedBox(
+                  height: context.height * 0.025,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  textBaseline: TextBaseline.alphabetic,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  children: [
+                    Text(
+                      getLang(context, 'already_have_ac'),
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        getLang(
+                          context,
+                          'login',
+                        ),
+                        style: Theme.of(context).textTheme.button!.copyWith(
+                              color: AppColor.defaultColor,
+                            ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -159,13 +179,5 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     );
-  }
-
-  String? _validation(value) {
-    if (value!.isNotEmpty) {
-      return null;
-    } else {
-      return getLang(context, 'required');
-    }
   }
 }
