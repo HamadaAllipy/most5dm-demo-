@@ -1,11 +1,14 @@
+import 'dart:io';
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:most5dm/components/custom_status_bar.dart';
 import 'package:most5dm/components/background_image.dart';
+import 'package:most5dm/components/toast.dart';
 import 'package:most5dm/constants/app_colors.dart';
 import 'package:most5dm/constants/app_locale.dart';
 import 'package:most5dm/constants/app_string.dart';
@@ -83,6 +86,12 @@ class _LoginScreen_State extends State<LoginScreen_> {
                           text: getLang(context, 'phone_number'),
                           prefixIcon: Icons.phone,
                           width: width,
+                          validator: (value){
+                            if(value!.isEmpty){
+                              return 'Error';
+                            }
+                            return null;
+                          },
                           onChanged: (value) {
                             AuthCubit.get(context).validation(
                               value.toString(),
@@ -133,7 +142,9 @@ class _LoginScreen_State extends State<LoginScreen_> {
                       child: SizedBox(
                         height: height * 0.03,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            NavigatorComponents.navigateTo(context: context, routeName: AppString.enterPhoneScreen);
+                          },
                           style: Theme.of(context).textButtonTheme.style,
                           child: Text(
                             getLang(context, 'forget_password'),
@@ -144,12 +155,35 @@ class _LoginScreen_State extends State<LoginScreen_> {
                     SizedBox(
                       height: height * 0.064,
                     ),
-                    DefaultButton_(
-                      onPressed: () {},
-                      child: Text(
-                        getLang(context, 'login'),
-                        style: Theme.of(context).textTheme.button,
-                      ),
+                    BlocConsumer<AuthCubit, AuthStates>(
+                      listener: (context, state){
+                        if(state is LoginSuccessState){
+                          NavigatorComponents.navigateTo(context: context, routeName: AppString.appLayout);
+                        }
+                        else if(state is LoginErrorState){
+                          showToast(state.error);
+                        }
+                      },
+                      builder: (context, state) {
+                        var cubit = AuthCubit.get(context);
+                        if(state is LoadingLoginState){
+                          if(Platform.isIOS){
+                            return CupertinoActivityIndicator();
+                          }
+                          return const CircularProgressIndicator();
+                        }
+                        return DefaultButton_(
+                          onPressed: () {
+                            if(formKey.currentState!.validate()){
+                              cubit.loginWithPhoneNumber(phoneNumber: _phoneController.text, password: _passwordController.text);
+                            }
+                          },
+                          child: Text(
+                            getLang(context, 'login'),
+                            style: Theme.of(context).textTheme.button,
+                          ),
+                        );
+                      }
                     ),
                     SizedBox(
                       height: height * 0.039,

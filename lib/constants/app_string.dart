@@ -2,6 +2,8 @@
 
 class AppString {
 
+  AppString._();
+
   // * Screens
   static const String loginScreen = 'LoginScreen';
   static const String registerScreen = 'RegisterScreen';
@@ -10,6 +12,10 @@ class AppString {
   static const String disconnectedScreen = 'DisconnectedScreen';
   static const String splashScreen = 'SplashScreen';
   static const String bankAccountScreen = 'BankAccountScreen';
+  static const String forgetPasswordScreen = 'ForgetPasswordScreen';
+  static const String enterPhoneScreen = 'EnterPhoneScreen';
+  static const String enterCodeScreen = 'EnterCodeScreen';
+  static const String enterNewPassword = 'EnterNewPassword';
 
 
   static const String phoneNumber = 'رقم الموبايل';

@@ -115,6 +115,9 @@ class _RegisterScreen_State extends State<RegisterScreen_> {
                 Row(
                   children: [
                     SizedBox(
+                      width: width * 0.02,
+                    ),
+                    SizedBox(
                       width: 18,
                       height: 18,
                       child: Checkbox(

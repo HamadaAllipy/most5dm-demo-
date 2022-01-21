@@ -6,11 +6,15 @@ import 'package:most5dm/components/dio_helper.dart';
 import 'package:most5dm/components/locale_helper.dart';
 import 'package:most5dm/components/read_json.dart';
 import 'package:most5dm/modules/auth/viewModel/cubit/auth_cubit.dart';
+import 'package:most5dm/modules/forget_password/view/screen/enter_phone_screen.dart';
+import 'package:most5dm/modules/forget_password/view/screen/enter_code_screen.dart';
 import 'package:most5dm/style/light_theme.dart';
 import 'constants/app_router.dart';
 import 'constants/app_string.dart';
 import 'constants/observer.dart';
 import 'modules/auth/view/screen/login_screen_.dart';
+import 'modules/forget_password/view/screen/enter_new_password_screen.dart';
+import 'modules/forget_password/view/screen/forget_password_screen.dart';
 
 void main() async {
   // changeStatusBarColor();
@@ -44,7 +48,7 @@ class MyApp extends StatelessWidget {
         theme: lightTheme,
         darkTheme: ThemeData.dark(),
         themeMode: ThemeMode.light,
-        // home: const LoginScreen_(),
+        // home: const BackPasswordScreen(),
         initialRoute: AppString.splashScreen,
         onGenerateRoute: AppRouter.onGenerateRoute,
         localizationsDelegates: localizationsDelegates,

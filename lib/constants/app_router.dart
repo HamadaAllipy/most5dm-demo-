@@ -4,6 +4,10 @@ import 'package:most5dm/modules/add_ads/viewModel/cubit/add_ads_cubit.dart';
 import 'package:most5dm/modules/auth/view/screen/bank_account_screen.dart';
 import 'package:most5dm/modules/auth/view/screen/login_screen_.dart';
 import 'package:most5dm/modules/auth/view/screen/register_screen_.dart';
+import 'package:most5dm/modules/forget_password/view/screen/enter_code_screen.dart';
+import 'package:most5dm/modules/forget_password/view/screen/enter_new_password_screen.dart';
+import 'package:most5dm/modules/forget_password/view/screen/enter_phone_screen.dart';
+import 'package:most5dm/modules/forget_password/view/screen/forget_password_screen.dart';
 import 'package:most5dm/modules/splash/view/screens/splash_screen.dart';
 import 'package:most5dm/constants/internet_checker.dart';
 import 'package:most5dm/layout/app_cubit.dart';
@@ -46,6 +50,14 @@ class AppRouter {
         return _navigateSplashScreen();
       case AppString.bankAccountScreen:
         return _navigateBankAccountScreen();
+      case AppString.forgetPasswordScreen:
+        return _navigateForgetPasswordScreen();
+      case AppString.enterPhoneScreen:
+        return _navigateEnterPhoneScreen();
+      case AppString.enterCodeScreen:
+        return _navigateEnterCodeScreen();
+      case AppString.enterNewPassword:
+        return _navigateEnterNewPasswordScreen();
     }
   }
 }
@@ -116,5 +128,34 @@ MaterialPageRoute _navigateSplashScreen(){
 MaterialPageRoute _navigateBankAccountScreen(){
   return MaterialPageRoute(
     builder: (context) => const BankAccountScreen(),
+  );
+}
+
+
+// {9- ForgetPassword Screen}
+MaterialPageRoute _navigateForgetPasswordScreen(){
+  return MaterialPageRoute(
+    builder: (context) => const ForgetPasswordScreen(),
+  );
+}
+
+// {8- ForgetPassword Screen}
+MaterialPageRoute _navigateEnterPhoneScreen(){
+  return MaterialPageRoute(
+    builder: (context) => const EnterPhoneScreen(),
+  );
+}
+
+// {8- ForgetPassword Screen}
+MaterialPageRoute _navigateEnterCodeScreen(){
+  return MaterialPageRoute(
+    builder: (context) => const EnterCodeScreen(),
+  );
+}
+
+// {8- ForgetPassword Screen}
+MaterialPageRoute _navigateEnterNewPasswordScreen(){
+  return MaterialPageRoute(
+    builder: (context) => const EnterNewPasswordScreen(),
   );
 }

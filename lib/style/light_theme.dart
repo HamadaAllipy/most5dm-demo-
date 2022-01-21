@@ -31,6 +31,16 @@ ThemeData lightTheme = ThemeData(
       fontSize: 22,
       fontWeight: FontWeight.normal,
     ),
+    subtitle1: TextStyle(
+      color: const Color(0xFF1E1E1E).withOpacity(0.87),
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+    ),
+    subtitle2: const TextStyle(
+      color: Color(0xFF707070),
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
