@@ -65,13 +65,13 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
                   ),
                   DefaultTextForm(
                     controller: rePasswordController,
-                    text: getLang(context, 're_password'),
+                    text: getLang(context, 'confirm_password'),
                     prefixIcon: Icons.lock,
                   ),
                   SizedBox(
                     height: height * 0.06,
                   ),
-                  DefaultButton_(
+                  DefaultButton(
                     onPressed: () {},
                     child: Text(
                       'تغيير كلمه المرور',

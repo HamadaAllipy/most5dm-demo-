@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart' show BuildContext, TextEditingController;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:most5dm/components/cash_helper.dart';
+import 'package:most5dm/components/components.dart';
 import 'package:most5dm/components/dio_helper.dart';
+import 'package:most5dm/constants/app_string.dart';
 import 'package:most5dm/constants/end_points.dart';
 import 'package:most5dm/modules/auth/model/model/login_model.dart';
 import 'package:most5dm/modules/auth/model/model/register_model.dart';
@@ -12,6 +17,10 @@ class AuthCubit extends Cubit<AuthStates> {
   bool _valid = false;
   bool empty = true;
 
+  bool _isChecked = false;
+
+  bool get isChecked => _isChecked;
+
   AuthCubit() : super(InitialAuthState());
 
   static AuthCubit get(BuildContext context) => BlocProvider.of(context);
@@ -19,7 +28,6 @@ class AuthCubit extends Cubit<AuthStates> {
   void toggleObscure() {
     _isHide = !_isHide;
     emit(ToggleObscureAuthState(_isHide));
-    print('toggleObscure');
   }
 
   bool get isHide => _isHide;
@@ -33,44 +41,42 @@ class AuthCubit extends Cubit<AuthStates> {
   }) {
     SendLogin sendLogin = SendLogin(phoneNumber, password);
     emit(LoadingLoginState());
-    print('${sendLogin.toJson()}');
     DioHelper.postData(
       endPoint: LOGIN,
       data: sendLogin.toJson(),
     ).then((value) {
       LoginModel model = LoginModel.fromJson(value!.data);
-      if (model.status == 'True') {
-        emit(LoginSuccessState());
-      } else if (model.status == 'Unauthorized') {
+      if (model.status == AppString.TRUE) {
+        CashHelper.toCash(key: AppString.TOKEN, value: model.data!.token.toString());
+        emit(LoginSuccessState(model));
+      } else if (model.status == AppString.UNAUTHORIZED) {
         emit(LoginErrorState(model.message.toString()));
-      } else if (model.status == 'Error') {
+      } else if (model.status == AppString.ERROR) {
         emit(LoginErrorState(model.message.toString()));
       } else {
-        print('??????????');
+        showToast(AppString.UNKNOWN);
       }
     }).catchError((onError){
-      print('ERROR::: ${onError.toString()}');
       emit(LoginErrorState(onError.toString()));
     });
   }
 
   void register({
-    required String fullName,
+    required String userName,
     required String phoneNumber,
     required String email,
     required String password,
     required String confirmPassword,
-    required String paymentCard,
   }) async {
     emit(LoadingRegisterState());
     SendRegister sendRegister = SendRegister(
-      username: fullName,
+      username: userName,
       email: email,
       phoneNumber: phoneNumber,
-      paymentCard: paymentCard,
       password: password,
       confirmPassword: password,
     );
+    print(sendRegister.toJson());
     DioHelper.postData(endPoint: REGISTER, data: sendRegister.toJson())
         .then((value) {
       print(value!.data);
@@ -79,18 +85,18 @@ class AuthCubit extends Cubit<AuthStates> {
         emit(RegisterSuccessState());
       } else {
         print('error{}{}{}{}{}');
-        // emit(RegisterErrorState(registerModel.message.toString()));
+        emit(RegisterErrorState(registerModel.message.toString()));
       }
     }).catchError((e) {
       print('error{}{}{}{}{}');
-      // emit(RegisterErrorState(e.toString()));
+      emit(RegisterErrorState(e.toString()));
     });
   }
 
   validationIcon(String value) {
     if (value.isEmpty) {
       empty = true;
-      emit(fieldIsEmptyState());
+      emit(FieldIsEmptyState());
     } else if (value.isNotEmpty) {
       empty = false;
       if (value.startsWith('05')) {
@@ -105,5 +111,10 @@ class AuthCubit extends Cubit<AuthStates> {
         emit(NotValidState());
       }
     }
+  }
+
+  void toggleCheckBox(bool checked){
+    _isChecked = checked;
+    emit(ToggleCheckedBoxState());
   }
 }

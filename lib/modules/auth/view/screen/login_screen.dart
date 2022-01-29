@@ -8,12 +8,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:most5dm/components/custom_status_bar.dart';
 import 'package:most5dm/components/background_image.dart';
-import 'package:most5dm/components/toast.dart';
+import 'package:most5dm/components/components.dart';
 import 'package:most5dm/constants/app_colors.dart';
 import 'package:most5dm/constants/app_locale.dart';
 import 'package:most5dm/constants/app_string.dart';
+import 'package:most5dm/constants/app_values.dart';
 import 'package:most5dm/constants/custom_icon_icons.dart';
 import 'package:most5dm/constants/done_icon_icons.dart';
+import 'package:most5dm/modules/auth/view/widgets/build_icon_not_valid.dart';
+import 'package:most5dm/modules/auth/view/widgets/build_icon_valid.dart';
 import 'package:most5dm/modules/auth/view/widgets/default_button_.dart';
 import 'package:most5dm/modules/auth/view/widgets/default_text_form.dart';
 import 'package:most5dm/modules/auth/viewModel/cubit/auth_cubit.dart';
@@ -33,6 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
   late TextEditingController _passwordController;
 
 
+
   @override
   void initState() {
     super.initState();
@@ -49,261 +53,251 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    return BlocProvider(
-      create: (context) => AuthCubit(),
-      child: Form(
-        key: formKey,
-        child: CustomStatusBar(
-          child: BackgroundImage(
-            child: Padding(
-              padding: EdgeInsetsDirectional.only(
-                top: height * 0.017,
-                start: width * 0.07,
-                end: width * 0.079,
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      width: double.infinity,
-                    ),
-                    SvgPicture.asset(
-                      'assets/images/login_image.svg',
-                      width: width * 0.59,
-                      height: height * 0.27,
-                    ),
-                    SizedBox(
-                      height: height * 0.01,
-                    ),
-                    Text(
-                      'تسجيل دخول',
-                      style: Theme.of(context).textTheme.headline5,
-                    ),
-                    SizedBox(
-                      height: height * 0.05,
-                    ),
-                    BlocBuilder<AuthCubit, AuthStates>(
-                      builder: (context, state) {
-                        var cubit = AuthCubit.get(context);
-                        return DefaultTextForm(
-                          controller: _phoneController,
-                          keyboardType: TextInputType.phone,
-                          text: getLang(context, 'phone_number'),
-                          prefixIcon: Icons.phone,
-                          validator: _validation,
-                          onChanged: (value) {
-                            AuthCubit.get(context).validationIcon(
-                              value.toString(),
-                            );
-                          },
-                          suffixIcon: cubit.empty
-                              ? null
-                              : cubit.valid
-                                  ? _buildValidIcon()
-                                  : _buildNotValidIcon(),
-                        );
-                      },
-                    ),
-                    SizedBox(
-                      height: height * 0.019,
-                    ),
-                    BlocBuilder<AuthCubit, AuthStates>(
-                      builder: (context, state) {
-                        var cubit = AuthCubit.get(context);
-                        return DefaultTextForm(
-                          textInputAction: TextInputAction.done,
-                          controller: _passwordController,
-                          keyboardType: TextInputType.visiblePassword,
-                          obscure: cubit.isHide,
-                          validator: _validation,
-                          text: getLang(context, 'password'),
-                          prefixIcon: Icons.lock,
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              cubit.toggleObscure();
+    return Form(
+      key: formKey,
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints ){
+          print('TAG ${constraints.maxWidth}');
+          return CustomStatusBar(
+            child: BackgroundImage(
+              child: Padding(
+                padding: EdgeInsetsDirectional.only(
+                  top: context.height * 0.017,
+                  start: context.width * 0.07,
+                  end: context.width * 0.079,
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        width: double.infinity,
+                      ),
+                      SvgPicture.asset(
+                        'assets/images/login_image.svg',
+                        width: context.width * 0.59,
+                        height: context.height * 0.27,
+                      ),
+                      SizedBox(
+                        height: context.height * 0.01,
+                      ),
+                      Text(
+                        'تسجيل دخول',
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      SizedBox(
+                        height: context.height * 0.05,
+                      ),
+                      BlocBuilder<AuthCubit, AuthStates>(
+                        builder: (context, state) {
+                          var cubit = AuthCubit.get(context);
+                          return DefaultTextForm(
+                            controller: _phoneController,
+                            keyboardType: TextInputType.phone,
+                            text: getLang(context, 'phone_number'),
+                            prefixIcon: Icons.phone,
+                            validator: validationText,
+                            onChanged: (value) {
+                              AuthCubit.get(context).validationIcon(
+                                value.toString(),
+                              );
                             },
-                            icon: Icon(
-                              cubit.isHide
-                                  ? Icons.remove_red_eye
-                                  : CustomIcon.eye_off,
-                              color: AppColor.defaultGrey,
+                            suffixIcon: cubit.empty
+                                ? null
+                                : cubit.valid
+                                ? const BuildIconValid()
+                                : const BuildIconNotValid(),
+                          );
+                        },
+                      ),
+                      SizedBox(
+                        height: context.height * 0.019,
+                      ),
+                      BlocBuilder<AuthCubit, AuthStates>(
+                        builder: (context, state) {
+                          var cubit = AuthCubit.get(context);
+                          return DefaultTextForm(
+                            textInputAction: TextInputAction.done,
+                            controller: _passwordController,
+                            keyboardType: TextInputType.visiblePassword,
+                            obscure: cubit.isHide,
+                            validator: validationText,
+                            text: getLang(context, 'password'),
+                            prefixIcon: Icons.lock,
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                cubit.toggleObscure();
+                              },
+                              icon: Icon(
+                                cubit.isHide
+                                    ? Icons.remove_red_eye
+                                    : CustomIcon.eye_off,
+                                color: AppColor.defaultGrey,
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                    SizedBox(
-                      height: height * 0.005,
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional.topEnd,
-                      child: SizedBox(
-                        height: height * 0.03,
-                        child: TextButton(
-                          onPressed: () {
-                            NavigatorComponents.navigateTo(context: context, routeName: AppString.enterPhoneScreen);
-                          },
-                          style: Theme.of(context).textButtonTheme.style,
-                          child: Text(
-                            getLang(context, 'forget_password'),
+                          );
+                        },
+                      ),
+                      SizedBox(
+                        height: context.height * 0.005,
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional.topEnd,
+                        child: SizedBox(
+                          height: context.height * 0.03,
+                          child: TextButton(
+                            onPressed: () {
+                              navigateTo(context: context, routeName: AppString.enterPhoneScreen);
+                            },
+                            style: Theme.of(context).textButtonTheme.style,
+                            child: Text(
+                              getLang(context, 'forget_password'),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: height * 0.064,
-                    ),
-                    BlocConsumer<AuthCubit, AuthStates>(
-                      listener: (context, state){
-                        if(state is LoginSuccessState){
-                          NavigatorComponents.navigateTo(context: context, routeName: AppString.appLayout);
-                        }
-                        else if(state is LoginErrorState){
-                          showToast(state.error.toString());
-                        }
-                      },
-                      builder: (context, state) {
-                        var cubit = AuthCubit.get(context);
-                        if(state is LoadingLoginState){
-                          if(Platform.isIOS){
-                            return const CupertinoActivityIndicator();
-                          }
-                          return const CircularProgressIndicator();
-                        }
-                        return DefaultButton_(
-                          onPressed: () {
-                            if(Platform.isIOS){
-                              _validationIos(cubit);
+                      SizedBox(
+                        height: context.height * 0.064,
+                      ),
+                      BlocConsumer<AuthCubit, AuthStates>(
+                          listener: (context, state){
+                            if(state is LoginSuccessState){
+                              navigateTo(context: context, routeName: AppString.appLayout);
                             }
-                            else if(Platform.isAndroid){
-                              _validationAndroid(cubit);
+                            else if(state is LoginErrorState){
+                              showToast(state.error.toString());
                             }
                           },
-                          child: Text(
-                            getLang(context, 'login'),
-                            style: Theme.of(context).textTheme.button,
-                          ),
-                        );
-                      }
-                    ),
-                    SizedBox(
-                      height: height * 0.039,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      textBaseline: TextBaseline.alphabetic,
-                      children: [
-                        Text(
-                          getLang(context, 'have_Account'),
-                          style: Theme.of(context).textTheme.headline6,
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            NavigatorComponents.navigateTo(
-                              context: context,
-                              routeName: AppString.registerScreen,
-                            );
-                          },
-                          child: Text(
-                            getLang(context, 'register_now'),
-                            style: Theme.of(context).textTheme.button!.copyWith(
-                                  color: AppColor.defaultColor,
-                                ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: height * 0.001,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          getLang(context, 'by_logging'),
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: Color(0xFF434343),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          style: Theme.of(context).textButtonTheme.style,
-                          child: Text(
-                              getLang(
-                                context,
-                                'terms_of_use',
+                          builder: (context, state) {
+                            var cubit = AuthCubit.get(context);
+                            if(state is LoadingLoginState){
+                              if(Platform.isIOS){
+                                return const CupertinoActivityIndicator();
+                              }
+                              return const CircularProgressIndicator();
+                            }
+                            return DefaultButton(
+                              onPressed: () {
+                                if(Platform.isIOS){
+                                  _validationIos(cubit);
+                                }
+                                else if(Platform.isAndroid){
+                                  _validationAndroid(cubit);
+                                }
+                              },
+                              child: Text(
+                                getLang(context, 'login'),
+                                style: Theme.of(context).textTheme.button,
                               ),
-                              style:
-                                  Theme.of(context).textTheme.button!.copyWith(
-                                        color: AppColor.defaultColor,
+                            );
+                          }
+                      ),
+                      SizedBox(
+                        height: context.height * 0.039,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Text(
+                            getLang(context, 'have_Account'),
+                            style: Theme.of(context).textTheme.headline6,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              navigateTo(
+                                context: context,
+                                routeName: AppString.registerScreen,
+                              );
+                            },
+                            child: Text(
+                              getLang(context, 'register_now'),
+                              style: Theme.of(context).textTheme.button!.copyWith(
+                                color: AppColor.defaultColor,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: context.height * 0.001,
+                      ),
+                      LayoutBuilder(
+                        builder: (BuildContext context, BoxConstraints constraints){
+                          print('TAG ${constraints.maxWidth}');
+                          if(364.228 > constraints.maxWidth){
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  getLang(context, 'by_logging'),
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFF434343),
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () {},
+                                  style: TextButton.styleFrom(
+                                      padding: EdgeInsets.zero,
+                                      textStyle: Theme.of(context).textTheme.button!.copyWith(
+                                        fontSize: 12,
+                                      )
+                                  ),
+                                  child: Text(
+                                    getLang(context, 'terms_of_use'),
+                                  ),
+                                ),
+                              ],
+                            );
+                          }
+                          else{
+                            ISSMALL = false;
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  getLang(context, 'by_logging'),
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF434343),
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () {},
+                                  style: TextButton.styleFrom(
+                                    // minimumSize: Size.zero, // Set this
+                                      padding: EdgeInsets.zero,
+                                      textStyle: Theme.of(context).textTheme.button!.copyWith(
                                         fontSize: 15,
-                                      ),),
-                        ),
-                      ],
-                    ),
-                  ],
+                                      )
+                                  ),
+                                  child: Text(
+                                    getLang(context, 'terms_of_use'),
+                                    style: TextStyle(
+                                      color: AppColor.defaultColor,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          }
+
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
 
-  Widget _buildValidIcon() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(
-          DoneIcon.ok,
-          color: AppColor.defaultColor,
-          size: 23,
-        ),
-        const SizedBox(
-          width: 12,
-        ),
-      ],
-    );
-  }
 
-  Widget _buildNotValidIcon() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          width: 19,
-          height: 19,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.red,
-          ),
-          child: const Icon(
-            Icons.clear,
-            color: Colors.white,
-            size: 16,
-          ),
-        ),
-        const SizedBox(
-          width: 12,
-        ),
-      ],
-    );
-  }
 
-  String? _validation(value) {
-    if (value!.isNotEmpty) {
-      return null;
-    } else {
-      return getLang(context, 'required');
-    }
-  }
 
   void _validationIos(AuthCubit cubit){
     // not valid
@@ -347,6 +341,14 @@ class _LoginScreenState extends State<LoginScreen> {
   void _validationAndroid(AuthCubit cubit){
     if(formKey.currentState!.validate()){
       cubit.loginWithPhoneNumber(phoneNumber: _phoneController.text, password: _passwordController.text);
+    }
+  }
+
+  String? validationText( value) {
+    if (value.isNotEmpty) {
+      return null;
+    } else {
+      return getLang(context, 'required');
     }
   }
 }

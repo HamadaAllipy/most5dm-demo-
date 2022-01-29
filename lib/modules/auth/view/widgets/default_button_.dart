@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:most5dm/constants/app_colors.dart';
 import 'package:most5dm/constants/app_values.dart';
 
-class DefaultButton_ extends StatelessWidget {
+class DefaultButton extends StatelessWidget {
 
   final VoidCallback? onPressed;
   final Widget child;
-  const DefaultButton_({Key? key, required this.onPressed, required this.child}) : super(key: key);
+  const DefaultButton({Key? key, required this.onPressed, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

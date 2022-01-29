@@ -6,8 +6,8 @@ import 'package:most5dm/constants/app_string.dart';
 import 'package:most5dm/layout/app_cubit.dart';
 import 'package:most5dm/layout/app_states.dart';
 
-class AppLayout extends StatelessWidget {
-  const AppLayout({Key? key}) : super(key: key);
+class AppLayoutDeprecated extends StatelessWidget {
+  const AppLayoutDeprecated({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +49,11 @@ class AppLayout extends StatelessWidget {
           ),
           label: getLang(context, 'favorite'),
         ),
-        BottomNavigationBarItem(
-          icon: const Icon(
-            AppIcons.list_add,
+        const BottomNavigationBarItem(
+          icon: Icon(
+            Icons.menu,
           ),
-          label: getLang(context, 'wishes'),
+          label: 'المزيد',
         ),
       ],
       currentIndex: cubit.index,

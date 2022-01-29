@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:most5dm/layout/views/app_layout.dart';
 import 'package:most5dm/modules/add_ads/viewModel/cubit/add_ads_cubit.dart';
-import 'package:most5dm/modules/auth/view/screen/bank_account_screen.dart';
 import 'package:most5dm/modules/auth/view/screen/login_screen.dart';
 import 'package:most5dm/modules/auth/view/screen/register_screen.dart';
+import 'package:most5dm/modules/edit_profile/view/screen/change_password_screen.dart';
+import 'package:most5dm/modules/edit_profile/view/screen/edit_profile_screen.dart';
+import 'package:most5dm/modules/edit_profile/view/screen/edit_profile_view_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_code_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_new_password_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_phone_screen.dart';
-import 'package:most5dm/modules/forget_password/view/screen/forget_password_screen.dart';
 import 'package:most5dm/modules/splash/view/screens/splash_screen.dart';
 import 'package:most5dm/constants/internet_checker.dart';
 import 'package:most5dm/layout/app_cubit.dart';
-import 'package:most5dm/layout/app_layout.dart';
+import 'package:most5dm/layout/app_layout_deprecated.dart';
 import 'package:most5dm/layout/app_states.dart';
 import 'package:most5dm/modules/add_ads/view/screen/add_ads_screen.dart';
 import 'package:most5dm/modules/categories/categories_screen.dart';
@@ -22,61 +24,70 @@ import 'app_string.dart';
 class AppRouter {
   static Route? onGenerateRoute(RouteSettings router) {
     switch (router.name) {
+    /// go to AUTH MODULE
       case AppString.loginScreen:
         return _navigateLoginScreen();
-
-      /// go to {Register Screen}
       case AppString.registerScreen:
         return _navigateRegisterScreen();
-
-      /// go to {App Layout Screen}
+      /// go to APP LAYOUT MODULE
       case AppString.appLayout:
         return _navigateAppLayoutScreen();
-
-      /// go to {Category Screen}
       case AppString.categoriesScreen:
         return _navigateCategoriesScreen();
-
-      /// go to {Add Ads Screen}
       case AppString.addAdsScreen:
         return _navigateAddAdsScreen();
-
-      /// go to {Disconnected Screen}
+      /// go to OFFLINE MODULE
       case AppString.disconnectedScreen:
         return _navigateDisconnectedScreen();
+    /// go to INTRO APP
       case AppString.splashScreen:
         return _navigateSplashScreen();
-      case AppString.bankAccountScreen:
-        return _navigateBankAccountScreen();
-      case AppString.forgetPasswordScreen:
-        return _navigateForgetPasswordScreen();
+    /// go to FORGET PASSWORD MODULE
       case AppString.enterPhoneScreen:
         return _navigateEnterPhoneScreen();
       case AppString.enterCodeScreen:
         return _navigateEnterCodeScreen();
       case AppString.enterNewPassword:
         return _navigateEnterNewPasswordScreen();
+
+      case AppString.viewProfileScreen:
+        return _navigateViewProfileScreen();
+
+      case AppString.editProfileScreen:
+        return _navigateEditProfileViewScreen();
+      case AppString.changePasswordScreen:
+        return _navigateChangePasswordScreen();
+
     }
   }
 }
 
-// {1- Login Screen}
+/// INTRO APP MODULE
+// Splash Screen
+MaterialPageRoute _navigateSplashScreen(){
+  return MaterialPageRoute(
+    builder: (context) => const SplashScreen(),
+  );
+}
+
+/// AUTH MODULE
+// Login Screen
 MaterialPageRoute _navigateLoginScreen(){
   return MaterialPageRoute(
     builder: (BuildContext context) => const LoginScreen(),
   );
 }
-// {2- register Screen}
+//  register Screen
 MaterialPageRoute _navigateRegisterScreen(){
   return  MaterialPageRoute(
     builder: (BuildContext context) => const RegisterScreen(),
   );
 }
-// {3- app layout Screen}
-MaterialPageRoute _navigateAppLayoutScreen(){
-  return MaterialPageRoute(
+
+/// LAYOUT MODULE
+// app layout Screen
+MaterialPageRoute _navigateAppLayoutScreen()=> MaterialPageRoute(
     builder: (BuildContext context) {
-      print('{}{}{}{}{} checkInternet()........');
       return BlocProvider(
         create: (BuildContext context) => AppCubit()..checkInternet(),
         child: BlocBuilder<AppCubit, AppStates>(
@@ -92,14 +103,13 @@ MaterialPageRoute _navigateAppLayoutScreen(){
       );
     },
   );
-}
-// {4- Categories Screen}
+// Categories Screen
 MaterialPageRoute _navigateCategoriesScreen(){
   return MaterialPageRoute(
     builder: (BuildContext context) => CategoriesScreen(),
   );
 }
-// {5- add ads Screen}
+// add ads Screen
 MaterialPageRoute _navigateAddAdsScreen() {
   return MaterialPageRoute(
     builder: (BuildContext context) => BlocProvider(
@@ -109,51 +119,53 @@ MaterialPageRoute _navigateAddAdsScreen() {
   );
 }
 
-// {6- Disconnected Screen}
-MaterialPageRoute _navigateDisconnectedScreen(){
-  return MaterialPageRoute(
-    builder: (context) => const DisconnectedScreen(tryAgainScreen: AppString.appLayout,),
-  );
-}
-// {7- Splash Screen}
-MaterialPageRoute _navigateSplashScreen(){
-  return MaterialPageRoute(
-    builder: (context) => const SplashScreen(),
-  );
-}
-
-// {8- BankAccount Screen}
-MaterialPageRoute _navigateBankAccountScreen(){
-  return MaterialPageRoute(
-    builder: (context) => const BankAccountScreen(),
-  );
-}
-
-
-// {9- ForgetPassword Screen}
-MaterialPageRoute _navigateForgetPasswordScreen(){
-  return MaterialPageRoute(
-    builder: (context) => const ForgetPasswordScreen(),
-  );
-}
-
-// {8- ForgetPassword Screen}
+/// FORGET PASSWORD MODULE
+// enter phone screen
 MaterialPageRoute _navigateEnterPhoneScreen(){
   return MaterialPageRoute(
     builder: (context) => const EnterPhoneScreen(),
   );
 }
 
-// {8- ForgetPassword Screen}
+// enter code screen
 MaterialPageRoute _navigateEnterCodeScreen(){
   return MaterialPageRoute(
     builder: (context) => const EnterCodeScreen(),
   );
 }
 
-// {8- ForgetPassword Screen}
+//  enter new password screen
 MaterialPageRoute _navigateEnterNewPasswordScreen(){
   return MaterialPageRoute(
     builder: (context) => const EnterNewPasswordScreen(),
+  );
+}
+
+/// PROFILE MODULE
+// view profile screen
+MaterialPageRoute _navigateViewProfileScreen() {
+  return MaterialPageRoute(
+    builder: (context) => const ViewProfileScreen(),
+  );
+}
+// edit profile screen
+
+MaterialPageRoute _navigateEditProfileViewScreen() {
+  return MaterialPageRoute(
+    builder: (context) => const EditProfileScreen(),
+  );
+}
+// change password screen
+MaterialPageRoute _navigateChangePasswordScreen() {
+  return MaterialPageRoute(
+    builder: (context) => const ChangePasswordScreen(),
+  );
+}
+
+/// OFFLINE MODULE
+// {1- Disconnected Screen}
+MaterialPageRoute _navigateDisconnectedScreen(){
+  return MaterialPageRoute(
+    builder: (context) => const DisconnectedScreen(tryAgainScreen: AppString.appLayout,),
   );
 }

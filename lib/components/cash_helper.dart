@@ -42,9 +42,28 @@ class CashHelper{
     }
   }
 
-  static Object? fromCash({
+  static String? getString({
     required String key,
 }){
-    return _sharedPreferences.get(key);
+    return _sharedPreferences.getString(key);
+  }
+  static bool? getBool({
+    required String key,
+}){
+    return _sharedPreferences.getBool(key);
+  }
+  static double? getDouble({
+    required String key,
+}){
+    return _sharedPreferences.getDouble(key);
+  }
+  static int? getInt({
+    required String key,
+}){
+    return _sharedPreferences.getInt(key);
+  }
+
+  static Future<bool> clearData()async{
+   return await _sharedPreferences.clear();
   }
 }

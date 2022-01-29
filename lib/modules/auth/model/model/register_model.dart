@@ -2,7 +2,6 @@ class SendRegister {
   final String username;
   final String email;
   final String phoneNumber;
-  final String paymentCard;
   final String password;
   final String confirmPassword;
 
@@ -10,7 +9,6 @@ class SendRegister {
     required this.username,
     required this.email,
     required this.phoneNumber,
-    required this.paymentCard,
     required this.password,
     required this.confirmPassword,
   });
@@ -19,7 +17,6 @@ class SendRegister {
         'username': username,
         'email': email,
         'phoneNumber': phoneNumber,
-        'paymentCard': paymentCard,
         'password': password,
         'confirmPassword': confirmPassword,
       };

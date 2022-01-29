@@ -1,3 +1,5 @@
+import 'package:most5dm/modules/auth/model/model/login_model.dart';
+
 abstract class AuthStates{}
 
 class InitialAuthState extends AuthStates{}
@@ -9,7 +11,13 @@ class ToggleObscureAuthState extends AuthStates{
 
 
 class LoadingLoginState extends AuthStates{}
-class LoginSuccessState extends AuthStates{}
+class LoginSuccessState extends AuthStates{
+
+  final LoginModel model;
+
+  LoginSuccessState(this.model);
+
+}
 class LoginErrorState extends AuthStates{
   String error;
   LoginErrorState(this.error);
@@ -24,4 +32,5 @@ class RegisterErrorState extends AuthStates{
 
 class ValidState extends AuthStates{}
 class NotValidState extends AuthStates{}
-class fieldIsEmptyState extends AuthStates{}
+class FieldIsEmptyState extends AuthStates{}
+class ToggleCheckedBoxState extends AuthStates{}

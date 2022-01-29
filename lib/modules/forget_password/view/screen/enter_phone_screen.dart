@@ -63,9 +63,9 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                   SizedBox(
                     height: height * 0.06,
                   ),
-                  DefaultButton_(
+                  DefaultButton(
                     onPressed: () {
-                      NavigatorComponents.navigateTo(context: context, routeName: AppString.enterCodeScreen);
+                      navigateTo(context: context, routeName: AppString.enterCodeScreen);
                     },
                     child: Text(
                       'ارسال الكود',

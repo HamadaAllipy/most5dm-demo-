@@ -285,7 +285,7 @@ class AddAdsScreen extends StatelessWidget {
                       ),
                   TextButton(
                         onPressed: () {
-                          NavigatorComponents.navigateToAndFinish(context: context, routeName: AppString.appLayout);
+                          navigateToAndFinish(context: context, routeName: AppString.appLayout);
                         },
                         child: const Text(
                           'نعم',

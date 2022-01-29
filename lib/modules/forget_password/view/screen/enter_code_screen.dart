@@ -114,9 +114,9 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
                   SizedBox(
                     height: height * 0.06,
                   ),
-                  DefaultButton_(
+                  DefaultButton(
                     onPressed: () {
-                      NavigatorComponents.navigateTo(context: context, routeName: AppString.enterNewPassword);
+                      navigateTo(context: context, routeName: AppString.enterNewPassword);
                     },
                     child: Text(
                       'تأكيد',

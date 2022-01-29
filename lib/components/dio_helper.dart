@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:most5dm/constants/app_string.dart';
+import 'package:most5dm/constants/end_points.dart';
 
 class DioHelper {
   static late Dio _dio;
@@ -7,15 +8,15 @@ class DioHelper {
   static init() {
     _dio = Dio(
       BaseOptions(
-        baseUrl: AppString.baseUrl,
+        baseUrl: BASE_URL,
         receiveDataWhenStatusError: true,
       ),
     );
   }
 
   static Future<Response?> get(
-      {required String endPoint, Map<String, dynamic>? queryParameters}) async {
-    _dio.options.headers = {};
+      {required String endPoint, Map<String, dynamic>? queryParameters, Map<String, dynamic>? headers}) async {
+    _dio.options.headers = headers;
     try {
       return await _dio.get(endPoint, queryParameters: queryParameters);
     } catch (error) {

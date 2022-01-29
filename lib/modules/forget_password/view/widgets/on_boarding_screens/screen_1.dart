@@ -44,7 +44,7 @@ class _ScreenOneState extends State<ScreenOne> {
         SizedBox(
           height: height * 0.06,
         ),
-        DefaultButton_(
+        DefaultButton(
           onPressed: () {},
           child: Text(
             'ارسال الكود',

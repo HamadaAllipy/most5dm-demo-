@@ -99,7 +99,7 @@ class _ScreenTwoState extends State<ScreenTwo> {
         SizedBox(
           height: height * 0.06,
         ),
-        DefaultButton_(
+        DefaultButton(
           onPressed: () {},
           child: Text(
             'تأكيد',

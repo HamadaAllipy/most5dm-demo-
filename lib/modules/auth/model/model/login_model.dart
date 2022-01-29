@@ -48,6 +48,8 @@ class DataModel {
     paymentCard = json['paymentCard'];
     picture = json['picture'];
     roles = json['roles'];
+    token = json['token'];
+    expiresOn = json['expiresOn'];
   }
 
 }

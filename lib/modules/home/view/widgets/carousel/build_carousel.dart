@@ -8,7 +8,6 @@ class BuildCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsetsDirectional.all(8.0),
       decoration: BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(
@@ -16,7 +15,6 @@ class BuildCarousel extends StatelessWidget {
           ),
           fit: BoxFit.cover,
         ),
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
       ),
     );
   }

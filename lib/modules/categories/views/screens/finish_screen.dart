@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:most5dm/components/read_json.dart';
 import 'package:most5dm/constants/app_colors.dart';
-import 'package:most5dm/modules/auth/view/widgets/default_button.dart';
 import 'package:most5dm/modules/categories/viewModels/all_categories_view_model.dart';
 import 'package:most5dm/modules/categories/views/widgets/default_category_screen.dart';
 import 'package:most5dm/shared/model/categories_model.dart';

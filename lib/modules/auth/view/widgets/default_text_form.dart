@@ -92,15 +92,16 @@ class DefaultTextForm extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       keyboardType: keyboardType,
       placeholder: text,
-      placeholderStyle: const TextStyle(
-        color: Colors.black38,
-      ),
+      placeholderStyle: TextStyle(
+          color: AppColor.defaultGrey,
+          fontSize: 20,
+          fontWeight: FontWeight.w100),
       decoration: BoxDecoration(
         color: CupertinoColors.extraLightBackgroundGray,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: CupertinoColors.lightBackgroundGray,
-          width: 2,
+          color: AppColor.secondColor,
+          width: 1,
         ),
       ),
       prefix: Row(
@@ -111,6 +112,8 @@ class DefaultTextForm extends StatelessWidget {
           ),
           Icon(
             prefixIcon,
+            color: AppColor.defaultGrey,
+            size: 24,
           ),
         ],
       ),
