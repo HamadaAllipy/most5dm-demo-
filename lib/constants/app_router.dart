@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:most5dm/layout/views/app_layout.dart';
+import 'package:most5dm/modules/account/view/screens/view_profile_screen.dart';
 import 'package:most5dm/modules/add_ads/viewModel/cubit/add_ads_cubit.dart';
 import 'package:most5dm/modules/auth/view/screen/login_screen.dart';
 import 'package:most5dm/modules/auth/view/screen/register_screen.dart';
-import 'package:most5dm/modules/edit_profile/view/screen/change_password_screen.dart';
-import 'package:most5dm/modules/edit_profile/view/screen/edit_profile_screen.dart';
-import 'package:most5dm/modules/edit_profile/view/screen/edit_profile_view_screen.dart';
+import 'package:most5dm/modules/account/view/screens/edit_profile_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_code_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_new_password_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_phone_screen.dart';
@@ -53,11 +52,6 @@ class AppRouter {
       case AppString.viewProfileScreen:
         return _navigateViewProfileScreen();
 
-      case AppString.editProfileScreen:
-        return _navigateEditProfileViewScreen();
-      case AppString.changePasswordScreen:
-        return _navigateChangePasswordScreen();
-
     }
   }
 }
@@ -73,6 +67,7 @@ MaterialPageRoute _navigateSplashScreen(){
 /// AUTH MODULE
 // Login Screen
 MaterialPageRoute _navigateLoginScreen(){
+  print('_navigateLoginScreen');
   return MaterialPageRoute(
     builder: (BuildContext context) => const LoginScreen(),
   );
@@ -149,18 +144,18 @@ MaterialPageRoute _navigateViewProfileScreen() {
   );
 }
 // edit profile screen
-
-MaterialPageRoute _navigateEditProfileViewScreen() {
-  return MaterialPageRoute(
-    builder: (context) => const EditProfileScreen(),
-  );
-}
+//
+// MaterialPageRoute _navigateEditProfileViewScreen() {
+//   return MaterialPageRoute(
+//     builder: (context) => const EditProfileScreen(),
+//   );
+// }
 // change password screen
-MaterialPageRoute _navigateChangePasswordScreen() {
-  return MaterialPageRoute(
-    builder: (context) => const ChangePasswordScreen(),
-  );
-}
+// MaterialPageRoute _navigateChangePasswordScreen() {
+//   return MaterialPageRoute(
+//     builder: (context) => const ChangePasswordScreen(),
+//   );
+// }
 
 /// OFFLINE MODULE
 // {1- Disconnected Screen}

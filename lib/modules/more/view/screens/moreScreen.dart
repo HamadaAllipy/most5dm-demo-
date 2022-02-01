@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:most5dm/constants/app_string.dart';
-import 'package:most5dm/modules/edit_profile/view/screen/edit_profile_view_screen.dart';
+import 'package:most5dm/modules/account/view/screens/view_profile_screen.dart';
 import 'package:most5dm/shared/widgets/widgets.dart';
 
 class MoreScreen extends StatefulWidget {

@@ -47,7 +47,7 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
                     height: height * 0.018,
                   ),
                   Text(
-                    'اوشكت علي الانتهاء',
+                    getLang(context, 'almost_done'),
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   SizedBox(
@@ -56,8 +56,8 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
                   DefaultTextForm(
                     controller: passwordController,
                     keyboardType: TextInputType.phone,
-                    text: getLang(context, 'password'),
-                    prefixIcon: Icons.phone,
+                    text: getLang(context, 'new_password'),
+                    prefixIcon: Icons.lock,
                     onChanged: (value) {},
                   ),
                   SizedBox(
@@ -65,7 +65,7 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
                   ),
                   DefaultTextForm(
                     controller: rePasswordController,
-                    text: getLang(context, 'confirm_password'),
+                    text: getLang(context, 'confirm_new_password'),
                     prefixIcon: Icons.lock,
                   ),
                   SizedBox(
@@ -74,7 +74,7 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
                   DefaultButton(
                     onPressed: () {},
                     child: Text(
-                      'تغيير كلمه المرور',
+                      getLang(context, 'change_password'),
                       style: Theme.of(context).textTheme.button,
                     ),
                   ),

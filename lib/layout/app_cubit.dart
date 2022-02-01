@@ -3,10 +3,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:most5dm/components/cash_helper.dart';
+import 'package:most5dm/components/components.dart';
 import 'package:most5dm/constants/app_colors.dart';
 import 'package:most5dm/constants/app_icons.dart';
 import 'package:most5dm/layout/app_states.dart';
-import 'package:most5dm/modules/edit_profile/view/screen/edit_profile_view_screen.dart';
+import 'package:most5dm/modules/account/view/screens/view_profile_screen.dart';
+import 'package:most5dm/modules/account/view/screens/edit_profile_screen.dart';
 import 'package:most5dm/modules/favorite/view/screen/favorite_screen.dart';
 import 'package:most5dm/modules/home/model/model/product_model.dart';
 import 'package:most5dm/modules/home/model/repository/home_repository.dart';
@@ -38,7 +40,7 @@ class AppCubit extends Cubit<AppStates> {
   ];
   final List<Widget> screens = [
     const HomeScreen_(),
-    const MyPurchasesScreen(),
+    const ViewProfileScreen(),
     const SizedBox(),
     const FavoriteScreen(),
     const MoreScreen(),
@@ -156,10 +158,10 @@ class AppCubit extends Cubit<AppStates> {
     Future<List<ProductModel>> products = homeRepository.getAllProducts();
     products.then((value) {
       _productHome = value;
-      print(_productHome[1].image);
       emit(GetHomeDataSuccessState());
     }).catchError((onError) {
       print('Error: $onError');
+      showToast('Error: $onError');
     });
   }
 
@@ -178,4 +180,6 @@ class AppCubit extends Cubit<AppStates> {
   bool get isListView => _isListView;
 
   List<ProductModel> get productsHome => _productHome;
+
+
 }

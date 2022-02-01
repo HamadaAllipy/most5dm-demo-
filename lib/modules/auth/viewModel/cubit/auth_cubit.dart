@@ -17,6 +17,8 @@ class AuthCubit extends Cubit<AuthStates> {
   bool _valid = false;
   bool empty = true;
 
+
+
   bool _isChecked = false;
 
   bool get isChecked => _isChecked;
@@ -48,6 +50,7 @@ class AuthCubit extends Cubit<AuthStates> {
       LoginModel model = LoginModel.fromJson(value!.data);
       if (model.status == AppString.TRUE) {
         CashHelper.toCash(key: AppString.TOKEN, value: model.data!.token.toString());
+        CashHelper.toCash(key: 'user', value: jsonEncode(model.data!.toJson()));
         emit(LoginSuccessState(model));
       } else if (model.status == AppString.UNAUTHORIZED) {
         emit(LoginErrorState(model.message.toString()));
@@ -97,7 +100,8 @@ class AuthCubit extends Cubit<AuthStates> {
     if (value.isEmpty) {
       empty = true;
       emit(FieldIsEmptyState());
-    } else if (value.isNotEmpty) {
+    }
+    else if (value.isNotEmpty) {
       empty = false;
       if (value.startsWith('05')) {
         _valid = true;

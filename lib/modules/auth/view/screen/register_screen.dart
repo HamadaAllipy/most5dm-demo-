@@ -295,9 +295,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Text(
                               getLang(context, 'already_have_ac'),
                               style: Theme.of(context).textTheme.headline6,
+                              textScaleFactor: context.codeLang =='ar' ?1:0.9,
                             ),
                             TextButton(
                               onPressed: () {
+                                AuthCubit.get(context).validationIcon(
+                                  '',
+                                );
+
                                 Navigator.pop(context);
                               },
                               child: Text(
@@ -308,6 +313,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 style: Theme.of(context).textTheme.button!.copyWith(
                                   color: AppColor.defaultColor,
                                 ),
+                                textScaleFactor: context.codeLang =='ar' ?1:0.9,
                               ),
                             ),
                           ],

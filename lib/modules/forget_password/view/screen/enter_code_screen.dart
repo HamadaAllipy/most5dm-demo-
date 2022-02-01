@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:most5dm/components/background_image.dart';
 import 'package:most5dm/components/custom_status_bar.dart';
 import 'package:most5dm/constants/app_colors.dart';
+import 'package:most5dm/constants/app_locale.dart';
 import 'package:most5dm/constants/app_string.dart';
 import 'package:most5dm/modules/auth/view/widgets/default_button_.dart';
 import 'package:most5dm/modules/forget_password/view/widgets/build_back_icon.dart';
@@ -51,7 +52,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
                     height: height * 0.018,
                   ),
                   Text(
-                    'استرجاع كلمه المرور',
+                    getLang(context, 'recovery_password'),
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   SizedBox(
@@ -119,7 +120,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
                       navigateTo(context: context, routeName: AppString.enterNewPassword);
                     },
                     child: Text(
-                      'تأكيد',
+                      getLang(context, 'confirm'),
                       style: Theme.of(context).textTheme.button,
                     ),
                   ),
@@ -129,7 +130,7 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                        'ارسال الكود مرة أخري',
+                        getLang(context, 'send_code_again'),
                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Colors.black,

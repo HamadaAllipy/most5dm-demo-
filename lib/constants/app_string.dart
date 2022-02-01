@@ -42,4 +42,7 @@ class AppString {
 
   // *keys shared preferences
   static const String TOKEN = 'token';
+
+
+  static const String URL_IMAGE_ERROR = 'string?sv=2019-07-07&sr=c&sig=g%2FPjs4gt7m5Vapmkb88mv5AIKnGqz3GBFSIYc1Sn2V4%3D&se=2022-01-31T19%3A17%3A45Z&sp=r';
 }

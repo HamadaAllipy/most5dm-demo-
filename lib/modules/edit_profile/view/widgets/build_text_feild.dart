@@ -11,6 +11,7 @@ class BuildTextField extends StatelessWidget {
   final bool enabled;
   final bool obscure;
   final Widget? suffixIcon;
+  final ValueChanged<String>? onChanged;
 
   const BuildTextField({
     Key? key,
@@ -19,6 +20,7 @@ class BuildTextField extends StatelessWidget {
     required this.prefixIcon,
     this.enabled = true,
     this.obscure = false,
+    this.onChanged,
     this.suffixIcon,
   }) : super(key: key);
 
@@ -28,6 +30,7 @@ class BuildTextField extends StatelessWidget {
       enabled: enabled,
       obscureText: obscure,
       controller: controller,
+      onChanged: onChanged,
       style: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w100,

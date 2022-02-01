@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'dart:ui';
+import 'dart:ui' as ui;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +15,7 @@ import 'package:most5dm/constants/app_string.dart';
 import 'package:most5dm/constants/app_values.dart';
 import 'package:most5dm/constants/custom_icon_icons.dart';
 import 'package:most5dm/constants/done_icon_icons.dart';
+import 'package:most5dm/layout/views/app_layout.dart';
 import 'package:most5dm/modules/auth/view/widgets/build_icon_not_valid.dart';
 import 'package:most5dm/modules/auth/view/widgets/build_icon_valid.dart';
 import 'package:most5dm/modules/auth/view/widgets/default_button_.dart';
@@ -32,18 +33,17 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   var formKey = GlobalKey<FormState>();
-  late TextEditingController _phoneController;
-  late TextEditingController _passwordController;
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-
-
+  late String _systemLang;
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    _phoneController = TextEditingController();
-    _passwordController = TextEditingController();
+    _systemLang = ui.window.locale.languageCode;
+    print('LANGUAGE $_systemLang');
   }
-
   @override
   void dispose() {
     _phoneController.dispose();
@@ -57,7 +57,6 @@ class _LoginScreenState extends State<LoginScreen> {
       key: formKey,
       child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints ){
-          print('TAG ${constraints.maxWidth}');
           return CustomStatusBar(
             child: BackgroundImage(
               child: Padding(
@@ -67,6 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   end: context.width * 0.079,
                 ),
                 child: SingleChildScrollView(
+                  reverse: false,
                   child: Column(
                     children: [
                       const SizedBox(
@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: context.height * 0.01,
                       ),
                       Text(
-                        'تسجيل دخول',
+                        getLang(context, 'login'),
                         style: Theme.of(context).textTheme.headline5,
                       ),
                       SizedBox(
@@ -161,6 +161,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       BlocConsumer<AuthCubit, AuthStates>(
                           listener: (context, state){
                             if(state is LoginSuccessState){
+                              AuthCubit.get(context).validationIcon(
+                                '',
+                              );
+                              _phoneController.clear();
+                              _passwordController.clear();
                               navigateTo(context: context, routeName: AppString.appLayout);
                             }
                             else if(state is LoginErrorState){
@@ -202,9 +207,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           Text(
                             getLang(context, 'have_Account'),
                             style: Theme.of(context).textTheme.headline6,
+                            textScaleFactor: context.codeLang =='ar' ?1:0.7,
+                            softWrap: true,
                           ),
                           TextButton(
                             onPressed: () {
+                              AuthCubit.get(context).validationIcon(
+                                '',
+                              );
+                              _phoneController.clear();
+                              _passwordController.clear();
                               navigateTo(
                                 context: context,
                                 routeName: AppString.registerScreen,
@@ -215,6 +227,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               style: Theme.of(context).textTheme.button!.copyWith(
                                 color: AppColor.defaultColor,
                               ),
+                              textScaleFactor: context.codeLang =='ar' ?1:0.7,
                             ),
                           ),
                         ],
@@ -222,68 +235,31 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         height: context.height * 0.001,
                       ),
-                      LayoutBuilder(
-                        builder: (BuildContext context, BoxConstraints constraints){
-                          print('TAG ${constraints.maxWidth}');
-                          if(364.228 > constraints.maxWidth){
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  getLang(context, 'by_logging'),
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF434343),
-                                  ),
-                                ),
-                                TextButton(
-                                  onPressed: () {},
-                                  style: TextButton.styleFrom(
-                                      padding: EdgeInsets.zero,
-                                      textStyle: Theme.of(context).textTheme.button!.copyWith(
-                                        fontSize: 12,
-                                      )
-                                  ),
-                                  child: Text(
-                                    getLang(context, 'terms_of_use'),
-                                  ),
-                                ),
-                              ],
-                            );
-                          }
-                          else{
-                            ISSMALL = false;
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  getLang(context, 'by_logging'),
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Color(0xFF434343),
-                                  ),
-                                ),
-                                TextButton(
-                                  onPressed: () {},
-                                  style: TextButton.styleFrom(
-                                    // minimumSize: Size.zero, // Set this
-                                      padding: EdgeInsets.zero,
-                                      textStyle: Theme.of(context).textTheme.button!.copyWith(
-                                        fontSize: 15,
-                                      )
-                                  ),
-                                  child: Text(
-                                    getLang(context, 'terms_of_use'),
-                                    style: TextStyle(
-                                      color: AppColor.defaultColor,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            );
-                          }
-
-                        },
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            getLang(context, 'by_logging'),
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF434343),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            style: TextButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                textStyle: Theme.of(context)
+                                    .textTheme
+                                    .button!
+                                    .copyWith(
+                                      fontSize: 12,
+                                    )),
+                            child: Text(
+                              getLang(context, 'terms_of_use'),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

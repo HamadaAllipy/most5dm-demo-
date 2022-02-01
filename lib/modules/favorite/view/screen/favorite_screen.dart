@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:most5dm/components/cash_helper.dart';
 import 'package:most5dm/components/components.dart';
 import 'package:most5dm/constants/app_string.dart';
+import 'package:most5dm/modules/auth/view/screen/login_screen.dart';
 import 'package:most5dm/shared/widgets/widgets.dart';
 
 class FavoriteScreen extends StatelessWidget {
@@ -13,8 +14,13 @@ class FavoriteScreen extends StatelessWidget {
       child: OutlinedButton(
         onPressed: (){
           CashHelper.clearData().then((value) {
-            navigateToAndFinish(context: context, routeName: AppString.loginScreen);
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => const LoginScreen(),
+              ),
+            );
           }).catchError((onError){
+            print(onError);
             showToast(onError.toString());
           });
         },

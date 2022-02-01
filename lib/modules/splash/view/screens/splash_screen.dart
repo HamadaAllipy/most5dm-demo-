@@ -46,8 +46,6 @@ class _SplashScreenState extends State<SplashScreen>
         ),
       ),
     ).catchError((onError){
-      // TODO remove this
-      print('Error: $onError');
       showToast(onError.toString());
     });
   }

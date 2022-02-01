@@ -52,4 +52,16 @@ class DataModel {
     expiresOn = json['expiresOn'];
   }
 
+
+  Map<String , dynamic> toJson()=>{
+    'username': userName,
+    'phoneNumber': phoneNumber,
+    'email': email,
+    'paymentCard': paymentCard,
+    'picture': picture,
+    'roles': roles,
+    'token': token,
+    'expiresOn': expiresOn,
+  };
+
 }

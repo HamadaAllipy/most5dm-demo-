@@ -47,7 +47,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                     height: height * 0.018,
                   ),
                   Text(
-                    'استرجاع كلمه المرور',
+                    getLang(context, 'recovery_password'),
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   SizedBox(
@@ -68,7 +68,7 @@ class _EnterPhoneScreenState extends State<EnterPhoneScreen> {
                       navigateTo(context: context, routeName: AppString.enterCodeScreen);
                     },
                     child: Text(
-                      'ارسال الكود',
+                      getLang(context, 'send_code'),
                       style: Theme.of(context).textTheme.button,
                     ),
                   ),

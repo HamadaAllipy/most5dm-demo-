@@ -9,10 +9,12 @@ import 'package:most5dm/layout/app_cubit.dart';
 import 'package:most5dm/layout/app_states.dart';
 import 'package:most5dm/layout/views/widgets/custom_app_bar.dart';
 import 'package:most5dm/modules/add_ads/view/screen/add_ads_screen_.dart';
+import 'package:most5dm/modules/auth/model/model/login_model.dart';
 import 'package:most5dm/modules/home/model/service/home_service.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class AppLayout extends StatefulWidget {
+
   const AppLayout({Key? key}) : super(key: key);
 
   @override

@@ -20,5 +20,15 @@
   "add_ads": "أضف أعلان",
   "favorite": "المفضلة",
   "wishes": "الرغبات",
-  "continue": "الاستمرار"
+  "continue": "الاستمرار",
+  "recovery_password": "إسترجاع كلمه المرور",
+  "send_code": "إرسال الكود",
+  "back": "رجوع",
+  "almost_done": "أوشكت علي الانتهاء",
+  "confirm": "تأكيد",
+  "send_code_again": "إرسال الكود مرة أخري",
+  "change_password": "تغيير كلمة المرور ",
+  "new_password": "أدخل كلمة المرور الجديدة",
+  "confirm_new_password": "تأكيد كلمه المرور الجديدة"
+
 }

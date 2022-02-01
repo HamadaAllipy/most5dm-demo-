@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:most5dm/constants/app_locale.dart';
 
 class BuildBackIcon extends StatelessWidget {
 
@@ -12,7 +13,7 @@ class BuildBackIcon extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children:  [
           Text(
-            'رجوع',
+            getLang(context, 'back'),
             style: Theme.of(context).textTheme.subtitle2,
           ),
           const SizedBox(

@@ -15,6 +15,7 @@ class ListViewProducts extends StatelessWidget {
       itemCount: appCubit.productsHome.length,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
+
         return Padding(
           padding: EdgeInsetsDirectional.only(
             bottom: context.height * 0.008,
@@ -37,8 +38,15 @@ class ListViewProducts extends StatelessWidget {
               children: [
                 Expanded(
                   child: Image.network(
-                    'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTJ8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80',
+                    appCubit.productsHome[index].image.toString().contains('string?sv')?
+                    'https://www.pizzahut.ae/assets/imgs/default/default.png':appCubit.productsHome[index].image.toString(),
                     fit: BoxFit.cover,
+                    errorBuilder: (context, error, dsf){
+                      return Image.network(
+                        'https://www.pizzahut.ae/assets/imgs/default/default.png',
+                        fit: BoxFit.cover,
+                      );
+                    },
                   ),
                 ),
                 Expanded(
