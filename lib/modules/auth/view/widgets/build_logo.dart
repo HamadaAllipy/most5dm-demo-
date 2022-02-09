@@ -8,8 +8,8 @@ class BuildLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       'assets/images/most5dm.png',
-      height: heightLogoMost5dm,
-      width: widthLogoMost5dm,
+      height: 200.0,
+      width: 180,
       fit: BoxFit.cover,
     );
   }

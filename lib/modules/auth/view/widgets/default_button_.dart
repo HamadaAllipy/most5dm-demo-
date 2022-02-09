@@ -22,7 +22,7 @@ class DefaultButton extends StatelessWidget {
       height: context.height * 0.06,
       color: AppColor.defaultColor,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(6),
         side: BorderSide(
           color: AppColor.secondColor,
           width: 1,
@@ -36,7 +36,7 @@ class DefaultButton extends StatelessWidget {
       child: CupertinoButton(
         color: AppColor.defaultColor,
         child: child,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(6),
         onPressed: onPressed,
       ),
     );

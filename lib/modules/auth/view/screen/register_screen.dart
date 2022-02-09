@@ -104,8 +104,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           height: context.height * 0.10,
                         ),
                         DefaultTextForm(
-                          keyboardType: TextInputType.name,
-                          textInputAction: TextInputAction.next,
+                          textInputType: TextInputType.name,
+                          textInputActionIos: TextInputAction.next,
                           controller: _userNameController,
                           validator: validationText,
                           text: getLang(context, 'userName'),
@@ -119,7 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             var cubit = AuthCubit.get(context);
                             return DefaultTextForm(
                               controller: _phoneNumberController,
-                              keyboardType: TextInputType.phone,
+                              textInputType: TextInputType.phone,
                               text: getLang(context, 'phone_number'),
                               prefixIcon: Icons.phone,
                               validator: validationText,
@@ -140,8 +140,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           height: context.height * 0.017,
                         ),
                         DefaultTextForm(
-                          keyboardType: TextInputType.emailAddress,
-                          textInputAction: TextInputAction.next,
+                          textInputType: TextInputType.emailAddress,
+                          textInputActionIos: TextInputAction.next,
                           controller: _emailController,
                           text: getLang(context, 'email'),
                           validator: validationText,
@@ -153,9 +153,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         BlocBuilder<AuthCubit, AuthStates>(builder: (context, state) {
                           var cubit = AuthCubit.get(context);
                           return DefaultTextForm(
-                            textInputAction: TextInputAction.done,
+                            textInputActionIos: TextInputAction.done,
                             controller: _passwordController,
-                            keyboardType: TextInputType.visiblePassword,
+                            textInputType: TextInputType.visiblePassword,
                             obscure: cubit.isHide,
                             validator: validationText,
                             text: getLang(context, 'password'),
@@ -179,9 +179,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         BlocBuilder<AuthCubit, AuthStates>(builder: (context, state) {
                           var cubit = AuthCubit.get(context);
                           return DefaultTextForm(
-                            textInputAction: TextInputAction.done,
+                            textInputActionIos: TextInputAction.done,
                             controller: _confirmPasswordController,
-                            keyboardType: TextInputType.visiblePassword,
+                            textInputType: TextInputType.visiblePassword,
                             obscure: cubit.isHide,
                             validator: validationText,
                             text: getLang(context, 'confirm_password'),

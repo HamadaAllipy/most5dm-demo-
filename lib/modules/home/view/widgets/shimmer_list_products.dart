@@ -3,13 +3,15 @@ import 'package:most5dm/constants/app_values.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerListProducts extends StatelessWidget {
-  const ShimmerListProducts({Key? key}) : super(key: key);
+
+  final int itemCount;
+  const ShimmerListProducts({Key? key, this.itemCount = 2}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 2,
+      itemCount: itemCount,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return Padding(

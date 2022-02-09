@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart'
-    show BuildContext, MaterialPageRoute, Navigator, Route, Widget;
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:flutter/material.dart';
+
+import 'package:most5dm/constants/app_values.dart';
+import 'package:most5dm/utils/utils.dart';import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 void navigateTo({
   required BuildContext context,
@@ -38,5 +39,23 @@ void navigateToOutSideBottomNav({
     screen: widget,
     withNavBar: false, // OPTIONAL VALUE. True by default.
     pageTransitionAnimation: PageTransitionAnimation.cupertino,
+  );
+}
+
+Widget buildErrorImage(BuildContext context,
+    Object error,
+    StackTrace? stackTrace,){
+  DebugPrint('Image ${context.widget}\n $error \n $stackTrace');
+  return Container(
+    width: double.infinity,
+    height: context.height * 0.138,
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage(
+          'assets/images/error_image.png',
+        ),
+        fit: BoxFit.cover,
+      ),
+    ),
   );
 }

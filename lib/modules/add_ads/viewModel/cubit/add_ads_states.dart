@@ -9,3 +9,5 @@ class ErrorSelectedImage extends AddAdsStates{
   ErrorSelectedImage(this.error);
 
 }
+class GetCategoriesSuccessState extends AddAdsStates{}
+class GetCategoriesLoadingState extends AddAdsStates{}

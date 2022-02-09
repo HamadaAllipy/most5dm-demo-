@@ -5,6 +5,7 @@ import 'package:most5dm/components/background_image.dart';
 import 'package:most5dm/components/custom_status_bar.dart';
 import 'package:most5dm/constants/app_colors.dart';
 import 'package:most5dm/constants/app_locale.dart';
+import 'package:most5dm/constants/app_values.dart';
 import 'package:most5dm/modules/auth/view/widgets/default_button_.dart';
 import 'package:most5dm/modules/auth/view/widgets/default_text_form.dart';
 import 'package:most5dm/modules/forget_password/view/widgets/build_back_icon.dart';
@@ -55,7 +56,7 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
                   ),
                   DefaultTextForm(
                     controller: passwordController,
-                    keyboardType: TextInputType.phone,
+                    textInputType: TextInputType.phone,
                     text: getLang(context, 'new_password'),
                     prefixIcon: Icons.lock,
                     onChanged: (value) {},

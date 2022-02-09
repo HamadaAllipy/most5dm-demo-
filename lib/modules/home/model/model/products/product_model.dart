@@ -9,15 +9,8 @@ class ProductModel {
   int? brandId;
   String? image;
   String? location;
+  int? cityId;
 
-  ProductModel({
-    this.image =
-        'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTJ8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80',
-    this.name = 'سيارة مرسيدس بينز',
-    this.shortDesc = 'موديل 2017',
-    this.price = 500.0,
-    this.location = 'جده',
-  });
 
   ProductModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -30,5 +23,6 @@ class ProductModel {
     brandId = json['brandId'];
     image = json['iconUri'];
     quantity = json['quantity'];
+    cityId = json['cityId'];
   }
 }

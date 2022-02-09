@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:most5dm/constants/app_string.dart';
 import 'package:most5dm/constants/end_points.dart';
 
 class DioHelper {
@@ -10,6 +9,7 @@ class DioHelper {
       BaseOptions(
         baseUrl: BASE_URL,
         receiveDataWhenStatusError: true,
+        connectTimeout: 10000,
       ),
     );
   }
@@ -19,12 +19,7 @@ class DioHelper {
       Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? headers}) async {
     _dio.options.headers = headers;
-    try {
       return await _dio.get(endPoint, queryParameters: queryParameters);
-    } catch (error) {
-      print('Error when GET ${error.toString()}');
-      return null;
-    }
   }
 
   static Future<Response?> postData({

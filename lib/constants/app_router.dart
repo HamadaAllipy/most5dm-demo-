@@ -5,17 +5,13 @@ import 'package:most5dm/modules/account/view/screens/view_profile_screen.dart';
 import 'package:most5dm/modules/add_ads/viewModel/cubit/add_ads_cubit.dart';
 import 'package:most5dm/modules/auth/view/screen/login_screen.dart';
 import 'package:most5dm/modules/auth/view/screen/register_screen.dart';
-import 'package:most5dm/modules/account/view/screens/edit_profile_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_code_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_new_password_screen.dart';
 import 'package:most5dm/modules/forget_password/view/screen/enter_phone_screen.dart';
 import 'package:most5dm/modules/splash/view/screens/splash_screen.dart';
-import 'package:most5dm/constants/internet_checker.dart';
 import 'package:most5dm/layout/app_cubit.dart';
-import 'package:most5dm/layout/app_layout_deprecated.dart';
 import 'package:most5dm/layout/app_states.dart';
 import 'package:most5dm/modules/add_ads/view/screen/add_ads_screen.dart';
-import 'package:most5dm/modules/categories/categories_screen.dart';
 import 'package:most5dm/components/disconnected_screen.dart';
 
 import 'app_string.dart';
@@ -31,8 +27,6 @@ class AppRouter {
       /// go to APP LAYOUT MODULE
       case AppString.appLayout:
         return _navigateAppLayoutScreen();
-      case AppString.categoriesScreen:
-        return _navigateCategoriesScreen();
       case AppString.addAdsScreen:
         return _navigateAddAdsScreen();
       /// go to OFFLINE MODULE
@@ -83,27 +77,10 @@ MaterialPageRoute _navigateRegisterScreen(){
 // app layout Screen
 MaterialPageRoute _navigateAppLayoutScreen()=> MaterialPageRoute(
     builder: (BuildContext context) {
-      return BlocProvider(
-        create: (BuildContext context) => AppCubit()..checkInternet(),
-        child: BlocBuilder<AppCubit, AppStates>(
-          builder: (context, state) {
-            if(state is InternetDisconnectedState){
-              return const DisconnectedScreen(tryAgainScreen: AppString.appLayout,);
-            }
-            else{
-              return const AppLayout();
-            }
-          },
-        ),
-      );
+      return AppLayout();
     },
   );
 // Categories Screen
-MaterialPageRoute _navigateCategoriesScreen(){
-  return MaterialPageRoute(
-    builder: (BuildContext context) => CategoriesScreen(),
-  );
-}
 // add ads Screen
 MaterialPageRoute _navigateAddAdsScreen() {
   return MaterialPageRoute(
@@ -143,24 +120,11 @@ MaterialPageRoute _navigateViewProfileScreen() {
     builder: (context) => const ViewProfileScreen(),
   );
 }
-// edit profile screen
-//
-// MaterialPageRoute _navigateEditProfileViewScreen() {
-//   return MaterialPageRoute(
-//     builder: (context) => const EditProfileScreen(),
-//   );
-// }
-// change password screen
-// MaterialPageRoute _navigateChangePasswordScreen() {
-//   return MaterialPageRoute(
-//     builder: (context) => const ChangePasswordScreen(),
-//   );
-// }
 
 /// OFFLINE MODULE
 // {1- Disconnected Screen}
 MaterialPageRoute _navigateDisconnectedScreen(){
   return MaterialPageRoute(
-    builder: (context) => const DisconnectedScreen(tryAgainScreen: AppString.appLayout,),
+    builder: (context) => const DisconnectedScreen(),
   );
 }

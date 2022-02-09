@@ -75,11 +75,7 @@ class _MoreScreenState extends State<MoreScreen> {
         ),
         customDrop(),
       ],
-    ); Navigator.of(context).push(MaterialPageRoute(
-        builder: (context){
-          return const ViewProfileScreen();
-        }
-    ));
+    ); 
   }
 
   Widget dropDown(context){

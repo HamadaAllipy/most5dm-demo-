@@ -35,7 +35,7 @@ class DefaultTextButton extends StatelessWidget {
           child: Text(
             textButton,
             style: TextStyle(
-              fontSize: defaultFontSize,
+              fontSize: 16,
               color: AppColor.defaultColor,
               fontWeight: FontWeight.w600,
             ),

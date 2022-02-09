@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:most5dm/constants/app_locale.dart';
+import 'package:most5dm/constants/app_values.dart';
 import 'package:most5dm/modules/auth/view/widgets/default_button_.dart';
 import 'package:most5dm/modules/auth/view/widgets/default_text_form.dart';
 import 'package:most5dm/modules/forget_password/view/widgets/build_logo.dart';
@@ -37,7 +38,7 @@ class _ScreenThreeState extends State<ScreenThree> {
         ),
         DefaultTextForm(
           controller: phoneController,
-          keyboardType: TextInputType.phone,
+          textInputType: TextInputType.phone,
           text: getLang(context, 'phone_number'),
           prefixIcon: Icons.phone,
           onChanged: (value) {},

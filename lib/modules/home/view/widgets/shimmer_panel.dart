@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ShimmerPanel extends StatelessWidget {
-  const ShimmerPanel({Key? key}) : super(key: key);
+class ShimmerAdsPanel extends StatelessWidget {
+  const ShimmerAdsPanel({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

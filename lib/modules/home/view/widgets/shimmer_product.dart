@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:most5dm/constants/app_values.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ShimmerProduct extends StatefulWidget {
-  const ShimmerProduct({Key? key}) : super(key: key);
+class ShimmerGridViewProducts extends StatefulWidget {
+  const ShimmerGridViewProducts({Key? key}) : super(key: key);
 
   @override
-  State<ShimmerProduct> createState() => _ShimmerProductState();
+  State<ShimmerGridViewProducts> createState() => _ShimmerGridViewProductsState();
 }
 
-class _ShimmerProductState extends State<ShimmerProduct> {
+class _ShimmerGridViewProductsState extends State<ShimmerGridViewProducts> {
 
 
   final List products = [

@@ -55,225 +55,224 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints ){
-          return CustomStatusBar(
-            child: BackgroundImage(
-              child: Padding(
-                padding: EdgeInsetsDirectional.only(
-                  top: context.height * 0.017,
-                  start: context.width * 0.07,
-                  end: context.width * 0.079,
-                ),
-                child: SingleChildScrollView(
-                  reverse: false,
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        width: double.infinity,
-                      ),
-                      SvgPicture.asset(
-                        'assets/images/login_image.svg',
-                        width: context.width * 0.59,
-                        height: context.height * 0.27,
-                      ),
-                      SizedBox(
-                        height: context.height * 0.01,
-                      ),
-                      Text(
-                        getLang(context, 'login'),
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
-                      SizedBox(
-                        height: context.height * 0.05,
-                      ),
-                      BlocBuilder<AuthCubit, AuthStates>(
-                        builder: (context, state) {
-                          var cubit = AuthCubit.get(context);
-                          return DefaultTextForm(
-                            controller: _phoneController,
-                            keyboardType: TextInputType.phone,
-                            text: getLang(context, 'phone_number'),
-                            prefixIcon: Icons.phone,
-                            validator: validationText,
-                            onChanged: (value) {
-                              AuthCubit.get(context).validationIcon(
-                                value.toString(),
-                              );
-                            },
-                            suffixIcon: cubit.empty
-                                ? null
-                                : cubit.valid
-                                ? const BuildIconValid()
-                                : const BuildIconNotValid(),
-                          );
-                        },
-                      ),
-                      SizedBox(
-                        height: context.height * 0.019,
-                      ),
-                      BlocBuilder<AuthCubit, AuthStates>(
-                        builder: (context, state) {
-                          var cubit = AuthCubit.get(context);
-                          return DefaultTextForm(
-                            textInputAction: TextInputAction.done,
-                            controller: _passwordController,
-                            keyboardType: TextInputType.visiblePassword,
-                            obscure: cubit.isHide,
-                            validator: validationText,
-                            text: getLang(context, 'password'),
-                            prefixIcon: Icons.lock,
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                cubit.toggleObscure();
-                              },
-                              icon: Icon(
-                                cubit.isHide
-                                    ? Icons.remove_red_eye
-                                    : CustomIcon.eye_off,
-                                color: AppColor.defaultGrey,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                      SizedBox(
-                        height: context.height * 0.005,
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional.topEnd,
-                        child: SizedBox(
-                          height: context.height * 0.03,
-                          child: TextButton(
-                            onPressed: () {
-                              navigateTo(context: context, routeName: AppString.enterPhoneScreen);
-                            },
-                            style: Theme.of(context).textButtonTheme.style,
-                            child: Text(
-                              getLang(context, 'forget_password'),
-                            ),
+      child: CustomStatusBar(
+        child: BackgroundImage(
+          child: Padding(
+            padding: EdgeInsetsDirectional.only(
+              top: context.height * 0.017,
+              start: context.width * 0.07,
+              end: context.width * 0.079,
+            ),
+            child: SingleChildScrollView(
+              reverse: false,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    width: double.infinity,
+                  ),
+                  SvgPicture.asset(
+                    'assets/images/login_image.svg',
+                    width: context.width * 0.59,
+                    height: context.height * 0.27,
+                  ),
+                  SizedBox(
+                    height: context.height * 0.01,
+                  ),
+                  Text(
+                    getLang(context, 'login'),
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                  SizedBox(
+                    height: context.height * 0.05,
+                  ),
+                  _buildPhoneNumberField(),
+                  SizedBox(
+                    height: context.height * 0.019,
+                  ),
+                  BlocBuilder<AuthCubit, AuthStates>(
+                    builder: (context, state) {
+                      var cubit = AuthCubit.get(context);
+                      return DefaultTextForm(
+                        textInputActionIos: TextInputAction.done,
+                        controller: _passwordController,
+                        textInputType: TextInputType.visiblePassword,
+                        obscure: cubit.isHide,
+                        validator: validationText,
+                        text: getLang(context, 'password'),
+                        prefixIcon: Icons.lock,
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            cubit.toggleObscure();
+                          },
+                          icon: Icon(
+                            cubit.isHide
+                                ? Icons.remove_red_eye
+                                : CustomIcon.eye_off,
+                            color: AppColor.defaultGrey,
                           ),
                         ),
+                      );
+                    },
+                  ),
+                  SizedBox(
+                    height: context.height * 0.005,
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional.topEnd,
+                    child: SizedBox(
+                      height: context.height * 0.03,
+                      child: TextButton(
+                        onPressed: () {
+                          navigateTo(context: context, routeName: AppString.enterPhoneScreen);
+                        },
+                        style: Theme.of(context).textButtonTheme.style,
+                        child: Text(
+                          getLang(context, 'forget_password'),
+                        ),
                       ),
-                      SizedBox(
-                        height: context.height * 0.064,
-                      ),
-                      BlocConsumer<AuthCubit, AuthStates>(
-                          listener: (context, state){
-                            if(state is LoginSuccessState){
-                              AuthCubit.get(context).validationIcon(
-                                '',
-                              );
-                              _phoneController.clear();
-                              _passwordController.clear();
-                              navigateTo(context: context, routeName: AppString.appLayout);
+                    ),
+                  ),
+                  SizedBox(
+                    height: context.height * 0.064,
+                  ),
+                  BlocConsumer<AuthCubit, AuthStates>(
+                      listener: (context, state){
+                        if(state is LoginSuccessState){
+                          AuthCubit.get(context).validationIcon(
+                            '',
+                          );
+                          _phoneController.clear();
+                          _passwordController.clear();
+                          navigateTo(context: context, routeName: AppString.appLayout);
+                        }
+                        else if(state is LoginErrorState){
+                          showToast(state.error.toString());
+                        }
+                      },
+                      builder: (context, state) {
+                        var cubit = AuthCubit.get(context);
+                        if(state is LoadingLoginState){
+                          if(Platform.isIOS){
+                            return const CupertinoActivityIndicator();
+                          }
+                          return const CircularProgressIndicator();
+                        }
+                        return DefaultButton(
+                          onPressed: () {
+                            if(Platform.isIOS){
+                              _validationIos(cubit);
                             }
-                            else if(state is LoginErrorState){
-                              showToast(state.error.toString());
+                            else if(Platform.isAndroid){
+                              _validationAndroid(cubit);
                             }
                           },
-                          builder: (context, state) {
-                            var cubit = AuthCubit.get(context);
-                            if(state is LoadingLoginState){
-                              if(Platform.isIOS){
-                                return const CupertinoActivityIndicator();
-                              }
-                              return const CircularProgressIndicator();
-                            }
-                            return DefaultButton(
-                              onPressed: () {
-                                if(Platform.isIOS){
-                                  _validationIos(cubit);
-                                }
-                                else if(Platform.isAndroid){
-                                  _validationAndroid(cubit);
-                                }
-                              },
-                              child: Text(
-                                getLang(context, 'login'),
-                                style: Theme.of(context).textTheme.button,
-                              ),
-                            );
-                          }
-                      ),
-                      SizedBox(
-                        height: context.height * 0.039,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.baseline,
-                        textBaseline: TextBaseline.alphabetic,
-                        children: [
-                          Text(
-                            getLang(context, 'have_Account'),
-                            style: Theme.of(context).textTheme.headline6,
-                            textScaleFactor: context.codeLang =='ar' ?1:0.7,
-                            softWrap: true,
+                          child: Text(
+                            getLang(context, 'login'),
+                            style: Theme.of(context).textTheme.button,
                           ),
-                          TextButton(
-                            onPressed: () {
-                              AuthCubit.get(context).validationIcon(
-                                '',
-                              );
-                              _phoneController.clear();
-                              _passwordController.clear();
-                              navigateTo(
-                                context: context,
-                                routeName: AppString.registerScreen,
-                              );
-                            },
-                            child: Text(
-                              getLang(context, 'register_now'),
-                              style: Theme.of(context).textTheme.button!.copyWith(
-                                color: AppColor.defaultColor,
-                              ),
-                              textScaleFactor: context.codeLang =='ar' ?1:0.7,
-                            ),
-                          ),
-                        ],
+                        );
+                      }
+                  ),
+                  SizedBox(
+                    height: context.height * 0.039,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        getLang(context, 'have_Account'),
+                        style: Theme.of(context).textTheme.headline6,
+                        textScaleFactor: context.codeLang =='ar' ?1:0.7,
+                        softWrap: true,
                       ),
-                      SizedBox(
-                        height: context.height * 0.001,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            getLang(context, 'by_logging'),
-                            style: const TextStyle(
-                              fontSize: 12,
-                              color: Color(0xFF434343),
-                            ),
+                      TextButton(
+                        onPressed: () {
+                          AuthCubit.get(context).validationIcon(
+                            '',
+                          );
+                          _phoneController.clear();
+                          _passwordController.clear();
+                          navigateTo(
+                            context: context,
+                            routeName: AppString.registerScreen,
+                          );
+                        },
+                        child: Text(
+                          getLang(context, 'register_now'),
+                          style: Theme.of(context).textTheme.button!.copyWith(
+                            color: AppColor.defaultColor,
                           ),
-                          TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                                textStyle: Theme.of(context)
-                                    .textTheme
-                                    .button!
-                                    .copyWith(
-                                      fontSize: 12,
-                                    )),
-                            child: Text(
-                              getLang(context, 'terms_of_use'),
-                            ),
-                          ),
-                        ],
+                          textScaleFactor: context.codeLang =='ar' ?1:0.7,
+                        ),
                       ),
                     ],
                   ),
-                ),
+                  SizedBox(
+                    height: context.height * 0.001,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        getLang(context, 'by_logging'),
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF434343),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            textStyle: Theme.of(context)
+                                .textTheme
+                                .button!
+                                .copyWith(
+                              fontSize: 12,
+                            )),
+                        child: Text(
+                          getLang(context, 'terms_of_use'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }
 
 
-
+  Widget _buildPhoneNumberField(){
+    return BlocBuilder<AuthCubit, AuthStates>(
+      builder: (context, state) {
+        var cubit = AuthCubit.get(context);
+        return DefaultTextForm(
+          controller: _phoneController,
+          textInputType: TextInputType.phone,
+          textInputActionIos: TextInputAction.continueAction,
+          text: getLang(context, 'phone_number'),
+          prefixIcon: Icons.phone,
+          validator: validationText,
+          onChanged: (value) {
+            AuthCubit.get(context).validationIcon(
+              value.toString(),
+            );
+          },
+          suffixIcon: cubit.empty
+              ? null
+              : cubit.valid
+              ? const BuildIconValid()
+              : const BuildIconNotValid(),
+        );
+      },
+    );
+  }
 
   void _validationIos(AuthCubit cubit){
     // not valid

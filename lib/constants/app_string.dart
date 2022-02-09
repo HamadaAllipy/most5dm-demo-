@@ -7,7 +7,6 @@ class AppString {
   // * Screens
   static const String loginScreen = 'LoginScreen';
   static const String registerScreen = 'RegisterScreen';
-  static const String categoriesScreen = 'CategoriesScreen';
   static const String addAdsScreen = 'AddAdsScreen';
   static const String disconnectedScreen = 'DisconnectedScreen';
   static const String splashScreen = 'SplashScreen';

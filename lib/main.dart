@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,10 +10,10 @@ import 'package:most5dm/components/locale_helper.dart';
 import 'package:most5dm/components/read_json.dart';
 import 'package:most5dm/constants/app_router.dart';
 import 'package:most5dm/constants/app_string.dart';
+import 'package:most5dm/modules/add_ads/viewModel/cubit/add_ads_cubit.dart';
 import 'package:most5dm/modules/auth/viewModel/cubit/auth_cubit.dart';
 import 'package:most5dm/style/light_theme.dart';
 import 'constants/observer.dart';
-import 'layout/views/app_layout.dart';
 
 void main() async {
   // changeStatusBarColor();
@@ -22,11 +24,10 @@ void main() async {
 
   readJson();
   DioHelper.init();
-
   Bloc.observer = MyBlocObserver();
   runApp(
     DevicePreview(
-      enabled: false,
+      enabled: Platform.isAndroid? true:false,
       builder: (BuildContext context) => const MyApp(),
     ),
   );
@@ -37,11 +38,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('TOKEN ${CashHelper.getString(key: 'token')}');
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) => AuthCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AddAdsCubit()..getMainCategories(),
         ),
         // TODO you can add another cubit here
       ],

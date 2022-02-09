@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:most5dm/components/background_image.dart';
 import 'package:most5dm/components/custom_status_bar.dart';
+import 'package:most5dm/components/disconnected_screen.dart';
 import 'package:most5dm/constants/app_colors.dart';
+import 'package:most5dm/constants/app_string.dart';
 import 'package:most5dm/constants/app_values.dart';
 import 'package:most5dm/layout/app_cubit.dart';
 import 'package:most5dm/layout/app_states.dart';
 import 'package:most5dm/layout/views/widgets/custom_app_bar.dart';
 import 'package:most5dm/modules/add_ads/view/screen/add_ads_screen_.dart';
+import 'package:most5dm/modules/add_ads/viewModel/cubit/add_ads_cubit.dart';
 import 'package:most5dm/modules/auth/model/model/login_model.dart';
-import 'package:most5dm/modules/home/model/service/home_service.dart';
+import 'package:most5dm/modules/home/model/service/products/products_services.dart';
+import 'package:most5dm/modules/home/model/service/main_category/main_category_service.dart';
+import 'package:most5dm/shared/widgets/widgets.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class AppLayout extends StatefulWidget {
@@ -23,35 +28,38 @@ class AppLayout extends StatefulWidget {
 
 class _AppLayoutState extends State<AppLayout> {
 
-  final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return CustomStatusBar(
       child: BlocProvider(
-        create: (BuildContext context) => AppCubit()..getHomeData(HomeApi()),
+        create: (BuildContext context) =>
+        AppCubit()
+        ..checkInternet(),
         child: BlocConsumer<AppCubit, AppStates>(
           listener: (BuildContext context, AppStates state) {
-            if(state is AddAdsScreenState){
-              // Navigator.pushNamed(context, AppString.addAdsScreen);
-
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context){
-                  return const AddAdsScreen_();
-                }
+            if (state is AddAdsScreenState) {
+              pushNewScreen(context, screen: BlocProvider(
+                create: (context) => AddAdsCubit()..getMainCategories(),
+                child: AddAdsScreen_(),
               ));
             }
           },
           builder: (BuildContext context, AppStates states) {
+            if(states is InternetDisconnectedState){
+              return const DisconnectedScreen();
+            }
             var cubit = AppCubit.get(context);
             return Scaffold(
-              drawer: const Drawer(),
               key: _scaffoldKey,
+              drawerScrimColor: Colors.transparent,
+              drawer: buildCustomDrawer(),
               appBar: CustomAppBar(
                 child: Row(
                   children: [
                     IconButton(
-                      onPressed: ()=>_scaffoldKey.currentState!.openDrawer(),
+                      onPressed: () => _scaffoldKey.currentState!.openDrawer(),
                       icon: Icon(
                         Icons.menu,
                         size: 30,
@@ -64,7 +72,7 @@ class _AppLayoutState extends State<AppLayout> {
                       width: context.width * 0.086,
                     ),
                     RichText(
-                      text:  TextSpan(
+                      text: TextSpan(
                         children: [
                           TextSpan(
                             text: 'Most',
@@ -111,10 +119,11 @@ class _AppLayoutState extends State<AppLayout> {
               ),
               body: PersistentTabView(
                 context,
+                hideNavigationBar: states is GetHomeDataLoadingState,
                 controller: cubit.bottomNavController,
                 screens: cubit.screens,
                 items: cubit.navBarsItems,
-                onItemSelected: (index){
+                onItemSelected: (index) {
                   cubit.changeBottomNav(index);
                 },
                 padding: const NavBarPadding.only(
@@ -156,4 +165,97 @@ class _AppLayoutState extends State<AppLayout> {
       ),
     );
   }
+
+
+  Widget buildCustomDrawer(){
+    return Column(
+      children: [
+        SizedBox(
+          height: kToolbarHeight,
+        ),
+        Expanded(
+          child: Container(
+            width: 300,
+            padding:  EdgeInsets.all(16),
+            color: AppColor.secondColor,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      height: 56,
+                      width: 56,
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.red
+                      ),
+                      child: Image.network(
+                        'https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Text(
+                      'عمر محمد',
+                      style: Theme.of(context).textTheme.headline6!.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Divider(
+                  color: AppColor.dimGrey,
+                  thickness: 1,
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'الاقسام',
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'اعلاناتي',
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'تسجيل الخروج',
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
 }
