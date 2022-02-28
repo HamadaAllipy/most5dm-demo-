@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:most5dm/components/background_image.dart';
+import 'package:most5dm/components/custom_app_bar_ios.dart';
 import 'package:most5dm/components/custom_status_bar.dart';
 import 'package:most5dm/constants/app_colors.dart';
 import 'package:most5dm/layout/app_cubit.dart';
@@ -26,29 +30,45 @@ class SelectMainCategoriesScreen extends StatelessWidget {
       child: BackgroundImage(
         child: Column(
           children: [
-            _buildAppBar(context),
+            if(Platform.isIOS)
+              CustomAppBarIos(
+                middle: Text(
+                  'اختر القسم',
+                  style: Theme.of(context).textTheme.headline6!.copyWith(
+                    color: Colors.white,
+                  ),
+                ),
+                leading: CupertinoButton(
+                  padding: EdgeInsets.zero,
+                  onPressed: (){
+                    Navigator.of(context).pop();
+                  },
+                  child: Icon(
+                    CupertinoIcons.back,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            if (Platform.isAndroid)
+              _buildAppBar(context),
             Expanded(
               child: Container(
-                color: Colors.white,
+                color: Colors.white.withOpacity(0.7),
                 child: BlocBuilder<AddAdsCubit, AddAdsStates>(
                   builder: (context, state) {
-                    return ListView.builder(
-                      shrinkWrap: true,
+                    return ListView.separated(
                       itemCount: mainCategoriesModel.length,
                       padding: EdgeInsets.zero,
                       itemBuilder: (context, index) {
-                        if (index.isOdd) {
-                          return Divider(
-                            height: 0.5,
-                            color: AppColor.dimGrey,
-                          );
-                        } else {
-                          return _buildListItem(
-                            context,
-                            mainCategoriesModel[index],
-                          );
-                        }
+                        return _buildListItem(
+                          context,
+                          mainCategoriesModel[index],
+                        );
                       },
+                      separatorBuilder: (context, index) => Divider(
+                        height: 0.5,
+                        color: AppColor.dimGrey,
+                      ),
                     );
                   },
                 ),
@@ -65,16 +85,18 @@ class SelectMainCategoriesScreen extends StatelessWidget {
       child: Row(
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: Icon(
-              Icons.clear,
+              Icons.arrow_back,
             ),
           ),
           SizedBox(
             width: 10,
           ),
           Text(
-            'اضف اعلان',
+            'اختر القسم',
             style: Theme
                 .of(context)
                 .textTheme
@@ -82,11 +104,6 @@ class SelectMainCategoriesScreen extends StatelessWidget {
                 .copyWith(
               color: AppColor.blackLight,
             ),
-          ),
-          Spacer(),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.check),
           ),
         ],
       ),
@@ -98,7 +115,7 @@ class SelectMainCategoriesScreen extends StatelessWidget {
     return ListTile(
       onTap: () async {
         AddAdsCubit.get(context).getAllCategories(mainCategoryModel.id as int);
-        navigateToByWidget(context, SelectCategoriesScreen(),);
+        navigateToByWidget(context, SelectCategoriesScreen(mainCategoryModel: mainCategoryModel),);
       },
       title: Text(
         mainCategoryModel.name.toString(),

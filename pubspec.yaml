@@ -39,7 +39,6 @@ dependencies:
   like_button: ^2.0.4
   flutter_svg: ^1.0.0
   connectivity: ^3.0.6
-  path_provider: ^2.0.8
   image_picker: ^0.8.4+4
   device_preview: ^1.0.0
   fluttertoast: ^8.0.8
@@ -95,6 +94,7 @@ flutter:
     - assets/categories.json
     - assets/icon/
     - assets/test.json
+    - assets/terms/terms_and_condition.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

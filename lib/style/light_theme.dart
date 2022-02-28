@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:most5dm/constants/app_colors.dart';
 
 ThemeData lightTheme = ThemeData(
@@ -59,3 +58,5 @@ ThemeData lightTheme = ThemeData(
     type: BottomNavigationBarType.fixed,
   ),
 );
+
+////Users/hamada/.android/avd/Pixel_3a_API_31_arm64-v8a.avd/data

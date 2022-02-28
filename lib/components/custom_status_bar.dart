@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -21,6 +23,7 @@ class CustomStatusBar extends StatelessWidget {
         value: brightness,
         child: Column(
           children: [
+            if(Platform.isAndroid)
             Container(
               height: MediaQuery.of(context).padding.top,
               color: statusBar,

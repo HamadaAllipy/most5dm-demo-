@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:most5dm/components/dio_helper.dart';
 import 'package:most5dm/constants/end_points.dart';
+import 'package:most5dm/modules/add_ads/Model/models/add_product_model.dart';
 import 'package:most5dm/modules/home/model/model/products/product_model.dart';
 import 'package:most5dm/modules/home/model/repository/products/products_repository.dart';
 
@@ -74,6 +75,20 @@ class ProductsService extends ProductsRepository {
     throw UnimplementedError();
   }
 
+  @override
+  Future<void> addProduct(AddProductModel addProductModel) async{
+    try {
+      Response? response = await DioHelper.post(
+        endPoint: ADD_PRODUCT,
+        data: addProductModel.toJson(),
+      );
+      print('product add Successfully');
+      print(response!.data);
+
+    } on Exception catch (e) {
+      print('Error -->> $e');
+    }
+  }
 
 
 }

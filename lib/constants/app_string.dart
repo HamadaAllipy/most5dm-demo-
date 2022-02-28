@@ -4,6 +4,8 @@ class AppString {
 
   AppString._();
 
+  // * Term of condition
+  static String terms_of_condition = '';
   // * Screens
   static const String loginScreen = 'LoginScreen';
   static const String registerScreen = 'RegisterScreen';

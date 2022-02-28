@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:most5dm/components/background_image.dart';
+import 'package:most5dm/components/custom_status_bar.dart';
 import 'package:most5dm/constants/app_values.dart';
 import 'package:most5dm/layout/app_cubit.dart';
 import 'package:most5dm/layout/app_states.dart';
@@ -49,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding:
               EdgeInsets.symmetric(horizontal: context.width * 0.037),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SearchHome(),
                   SizedBox(

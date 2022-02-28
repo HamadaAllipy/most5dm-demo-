@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart' show BuildContext, TextEditingController;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:most5dm/components/cash_helper.dart';
@@ -66,6 +67,7 @@ class AuthCubit extends Cubit<AuthStates> {
 
   void register({
     required String userName,
+    required String fullName,
     required String phoneNumber,
     required String email,
     required String password,
@@ -74,24 +76,26 @@ class AuthCubit extends Cubit<AuthStates> {
     emit(LoadingRegisterState());
     SendRegister sendRegister = SendRegister(
       username: userName,
+      fullName: fullName,
       email: email,
       phoneNumber: phoneNumber,
       password: password,
       confirmPassword: password,
     );
-    print(sendRegister.toJson());
-    DioHelper.postData(endPoint: REGISTER, data: sendRegister.toJson())
+    print('sendRegister ${sendRegister.toJson()}');
+    DioHelper.postData(endPoint: REGISTER, data: sendRegister.toJson(),)
         .then((value) {
-      print(value!.data);
-      RegisterModel registerModel = RegisterModel.fromJson(value.data);
+      RegisterModel registerModel = RegisterModel.fromJson(value!.data);
       if (registerModel.status == 'True') {
+        CashHelper.toCash(key: AppString.TOKEN, value: registerModel.data!.token.toString());
+        CashHelper.toCash(key: 'user', value: jsonEncode(registerModel.data!.toJson()));
+        empty = true;
         emit(RegisterSuccessState());
       } else {
-        print('error{}{}{}{}{}');
         emit(RegisterErrorState(registerModel.message.toString()));
       }
     }).catchError((e) {
-      print('error{}{}{}{}{}');
+      print('error{}{}{}{}{} $e');
       emit(RegisterErrorState(e.toString()));
     });
   }
@@ -121,4 +125,6 @@ class AuthCubit extends Cubit<AuthStates> {
     _isChecked = checked;
     emit(ToggleCheckedBoxState());
   }
+
+
 }

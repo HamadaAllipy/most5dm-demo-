@@ -23,13 +23,6 @@ class ShimmerListProducts extends StatelessWidget {
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
               color: Colors.white,
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.grey,
-                  offset: Offset(0.0, 1.0), //(x,y)
-                  blurRadius: 6.0,
-                ),
-              ],
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(

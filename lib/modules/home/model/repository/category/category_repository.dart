@@ -6,4 +6,5 @@ abstract class CategoryRepository{
 
 
   Future<List<CategoryModel>> getCategoryByMainCategoryId(int id);
+  Future<CategoryModel> getCategoryById(int idCategory);
 }

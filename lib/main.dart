@@ -16,18 +16,15 @@ import 'package:most5dm/style/light_theme.dart';
 import 'constants/observer.dart';
 
 void main() async {
-  // changeStatusBarColor();
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, ]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await CashHelper.initialSharedPreferences();
-
-  readJson();
+  await readTermOfCondition();
   DioHelper.init();
   Bloc.observer = MyBlocObserver();
   runApp(
     DevicePreview(
-      enabled: Platform.isAndroid? true:false,
+      enabled: Platform.isAndroid ? false : false,
       builder: (BuildContext context) => const MyApp(),
     ),
   );
@@ -44,7 +41,7 @@ class MyApp extends StatelessWidget {
           create: (context) => AuthCubit(),
         ),
         BlocProvider(
-          create: (context) => AddAdsCubit()..getMainCategories(),
+          create: (context) => AddAdsCubit()..getMainCategories()..getAllCities(),
         ),
         // TODO you can add another cubit here
       ],

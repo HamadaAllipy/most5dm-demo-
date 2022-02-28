@@ -26,6 +26,7 @@ class GetAllMainCategorySuccess extends AppStates{
 }
 class GetAllMainCategoryError extends AppStates{}
 class ToggleSearchOptionsButtonState extends AppStates{}
+class HandlingToggleItemButtonState extends AppStates{}
 
 
 class TryingAgainActionButton extends AppStates{}
@@ -39,4 +40,5 @@ class ErrorTryingActionButton extends AppStates{
 
 
 class SuccessTryingActionButton extends AppStates{}
+
 

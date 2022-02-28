@@ -18,7 +18,6 @@ class SearchCubit extends Cubit<SearchStates> {
   searchProducts({required String text}) async{
     emit(SearchLoadingState());
     _showSuggestions = false;
-
     ProductsService().getProductsBySearch(text).then((value) async{
       print('RESULT $value');
       for(var product in value){

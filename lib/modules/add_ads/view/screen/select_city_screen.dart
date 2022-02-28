@@ -13,14 +13,14 @@ import 'package:most5dm/modules/add_ads/view/screen/select_brands.dart';
 import 'package:most5dm/modules/add_ads/view/widgets/build_item_list_view.dart';
 import 'package:most5dm/modules/add_ads/viewModel/cubit/add_ads_cubit.dart';
 import 'package:most5dm/modules/home/model/model/category/category_model.dart';
+import 'package:most5dm/modules/home/model/model/city/city_model.dart';
 import 'package:most5dm/modules/home/model/model/main_category/main_category_model.dart';
 import 'package:most5dm/shared/widgets/widgets.dart';
 
 import '../../viewModel/cubit/add_ads_states.dart';
 
-class SelectCategoriesScreen extends StatelessWidget {
-  final MainCategoryModel mainCategoryModel;
-  const SelectCategoriesScreen({Key? key, required this.mainCategoryModel}) : super(key: key);
+class SelectCityScreen extends StatelessWidget {
+  const SelectCityScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class SelectCategoriesScreen extends StatelessWidget {
                 if(Platform.isIOS)
                   CustomAppBarIos(
                     middle: Text(
-                      'اختر القسم',
+                      'اختر المدينة',
                       style: Theme.of(context).textTheme.headline6!.copyWith(
                         color: Colors.white,
                       ),
@@ -49,48 +49,34 @@ class SelectCategoriesScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    trailing: CupertinoButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: (){
-                        cubit.selectMainCategory(mainCategoryModel);
-                        navigateToByWidget(context, AddAdsScreen_());
-                      },
-                      child: Icon(
-                        CupertinoIcons.checkmark_alt,
-                        size: 28,
-                        color: Colors.white,
-                      ),
-                    ),
                   ),
                 if (Platform.isAndroid)
                   _buildAppBar(context, cubit),
                 Expanded(
-                  child: state is! GetCategoriesLoadingState
-                      ? Container(
-                    color: Colors.white.withOpacity(0.7),
-                        child: BlocBuilder<AddAdsCubit, AddAdsStates>(
+                  child: cubit.allCities.isNotEmpty
+                      ? BlocBuilder<AddAdsCubit, AddAdsStates>(
                           builder: (context, state) {
-                            List<CategoryModel> categories =
-                                AddAdsCubit.get(context).categories;
                             return ListView.separated(
                               shrinkWrap: true,
-                              itemCount: categories.length,
+                              itemCount: cubit.allCities.length,
                               padding: EdgeInsets.zero,
                               itemBuilder: (context, index) {
-                                  return _buildListItem(
+                                return Container(
+                                  color: Colors.white,
+                                  child: _buildListItem(
                                     context,
                                     cubit,
-                                    categories[index],
-                                  );
+                                    cubit.allCities[index],
+                                  ),
+                                );
                               },
-                              separatorBuilder: (context, index)=> Divider(
-                                  height: 0.5,
-                                  color: AppColor.dimGrey,
-                                ),
+                              separatorBuilder: (context, index) => Divider(
+                                height: 0.5,
+                                color: AppColor.dimGrey,
+                              ),
                             );
                           },
-                        ),
-                      )
+                        )
                       : Center(child: CircularProgressIndicator()),
                 ),
               ],
@@ -117,37 +103,24 @@ class SelectCategoriesScreen extends StatelessWidget {
             width: 10,
           ),
           Text(
-            'اختر القسم',
+            'اختر المدينة',
             style: Theme.of(context).textTheme.headline6!.copyWith(
-                  color: AppColor.blackLight,
-                ),
-          ),
-          Spacer(),
-          IconButton(
-            onPressed: () {
-              cubit.selectMainCategory(mainCategoryModel);
-              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-                builder: (context) {
-                  return AddAdsScreen_();
-                },
-              ), (route) => route.isFirst);
-              // navigateToByWidget(context, AddAdsScreen_());
-            },
-            icon: Icon(Icons.check),
+              color: AppColor.blackLight,
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildListItem(BuildContext context, AddAdsCubit cubit,CategoryModel categoryModel) {
+  Widget _buildListItem(BuildContext context, AddAdsCubit cubit,CityModel cityModel) {
     return ListTile(
       onTap: () async{
-        cubit.getAllBrands(categoryModel.id as int);
-        navigateToByWidget(context, SelectBrandScreen(categoryModel: categoryModel, mainCategoryModel: mainCategoryModel,));
+        cubit.selectCity(cityModel);
+        navigateToByWidget(context, AddAdsScreen_());
       },
       title: Text(
-        categoryModel.name.toString(),
+        cityModel.name.toString(),
         style: Theme.of(context).textTheme.headline6,
       ),
       trailing: Icon(

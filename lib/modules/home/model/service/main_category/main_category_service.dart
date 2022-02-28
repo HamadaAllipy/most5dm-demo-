@@ -18,4 +18,14 @@ class MainCategoryService extends MainCategoryRepository{
         }
         return _mainCategoryList;
   }
+
+  @override
+  Future<MainCategoryModel> getMainCategoryById(int mainCategoryId) async{
+    Response? response = await DioHelper.get(
+      endPoint: GET_MAIN_CATEGORY_BY_ID,
+      queryParameters: {'MainCategoryId' : mainCategoryId},
+    );
+    List<dynamic> list = response!.data;
+    return MainCategoryModel.fromJson(list.first);
+  }
 }

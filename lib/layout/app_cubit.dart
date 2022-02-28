@@ -9,6 +9,7 @@ import 'package:most5dm/constants/app_colors.dart';
 import 'package:most5dm/constants/app_icons.dart';
 import 'package:most5dm/layout/app_states.dart';
 import 'package:most5dm/modules/account/view/screens/view_profile_screen.dart';
+import 'package:most5dm/modules/auth/model/model/login_model.dart';
 import 'package:most5dm/modules/favorite/view/screen/favorite_screen.dart';
 import 'package:most5dm/modules/home/model/model/brand/brand_model.dart';
 import 'package:most5dm/modules/home/model/model/category/category_model.dart';
@@ -38,6 +39,7 @@ class AppCubit extends Cubit<AppStates> {
 
   /// Variables
   int index = 0;
+  int indexMainCategorySearchScreen = 0;
   int? indexOfRowMainCategory;
   bool _isListView = CashHelper.getBool(key: 'view_products')?? false;
   bool enableSearchOptionButton = false;
@@ -46,6 +48,7 @@ class AppCubit extends Cubit<AppStates> {
   List<CategoryModel> _categories = [];
   List<ProductModel> _productsHome = [];
   List<CityModel> _cities = [];
+  DataModel? _dataModel;
 
   final PersistentTabController? _bottomNavController = PersistentTabController();
   final List<Widget> screens = [
@@ -129,16 +132,30 @@ class AppCubit extends Cubit<AppStates> {
       // emit(ChangeBottomNavigation());
     }
   }
-  void checkInternet() async {
+
+  void checkInternet({int? idMainCategory, int? indexSelectedMainCategory}) async {
     emit(TryingAgainActionButton());
-    Future.delayed(Duration(seconds: 3));
+    getUserInfo();
     ConnectivityResult result = await Connectivity().checkConnectivity();
     if (result == ConnectivityResult.none) {
+      // offline
       emit(InternetDisconnectedState());
     }
     else {
-      emit(InternetConnectedState());
-      getAllDataHome(ProductsService(), MainCategoryService());
+      // online
+      if(idMainCategory != null){
+        emit(InternetConnectedState());
+        handlingToggleItemButton(indexSelectedMainCategory!);
+        getAllDataHome(
+          productsRepository: ProductsService(),
+          mainCategoryRepository: MainCategoryService(),
+          idMainCategory: idMainCategory,
+        );
+      }
+      else{
+        emit(InternetConnectedState());
+        getAllDataHome(productsRepository: ProductsService(),mainCategoryRepository : MainCategoryService());
+      }
     }
   }
 
@@ -166,9 +183,13 @@ class AppCubit extends Cubit<AppStates> {
   }
   void actionButtonAll()async{
     disableSearchOptionsButton();
-    emit(GetHomeDataLoadingState());
-    _productsHome = await ProductsService().getAllProducts();
-    emit(GetHomeDataSuccessState());
+    // emit(GetHomeDataLoadingState());
+    // _productsHome = await ProductsService().getAllProducts();
+    // _cities = await CityServices().getAll();
+    // print('Button all ${cities.length}');
+    _cities = [];
+    getAllDataHome(productsRepository: ProductsService(), mainCategoryRepository: MainCategoryService());
+    // emit(GetHomeDataSuccessState());
 
   }
   void disableSearchOptionsButton() {
@@ -178,7 +199,6 @@ class AppCubit extends Cubit<AppStates> {
   void enableSearchOptionButtons(int indexOfRowMainCategory){
     this.indexOfRowMainCategory = indexOfRowMainCategory;
     enableSearchOptionButton= true;
-    emit(ToggleSearchOptionsButtonState());
   }
 
   /// APIs FUNCTION
@@ -186,7 +206,11 @@ class AppCubit extends Cubit<AppStates> {
   /// this is importing function its provide data to home page [Main Categories, Products] on the same time!!!!
   /// parameters [productsRepository] and [mainCategoryRepository] dependency injection,
   /// When this function is called, send objects from subclasses that inherit from abstract classes
-  void getAllDataHome(ProductsRepository productsRepository,  MainCategoryRepository mainCategoryRepository)async{
+  void getAllDataHome({
+  required ProductsRepository productsRepository,
+    required MainCategoryRepository mainCategoryRepository,
+    int? idMainCategory,
+})async{
 
     /// when getting data its emit [GetHomeDataSuccessState] to [HomeScreen] ,
     /// rebuild widgets [ShimmerAdsPanel] and [ShimmerGridViewProduct] or [ShimmerListProducts]
@@ -194,7 +218,9 @@ class AppCubit extends Cubit<AppStates> {
     emit(GetHomeDataLoadingState());
     var responses = Future.wait(
       [
-        productsRepository.getAllProducts(),
+        idMainCategory == null
+            ? productsRepository.getAllProducts()
+            : productsRepository.getAllProductsByMainCategoryId(idMainCategory),
         mainCategoryRepository.getAllMainCategory(),
       ],
     );
@@ -231,13 +257,29 @@ class AppCubit extends Cubit<AppStates> {
   void getProductsAfterFilter(int brandId) async{
     emit(GetHomeDataLoadingState());
    _productsHome = await ProductsService().getAllProductsByBrandId(brandId);
+    _cities = [];
+    for(ProductModel product in _productsHome){
+      List list = await CityServices().getCityByCityId(product.cityId as int);
+      _cities.add(list.first);
+    }
    emit(GetHomeDataSuccessState());
   }
 
   void getProductsAfterSelectMainCategory(int mainCategoryId)async{
-    emit(GetHomeDataLoadingState());
-    _productsHome = await ProductsService().getAllProductsByMainCategoryId(mainCategoryId);
-    emit(GetHomeDataSuccessState());
+
+    try {
+      emit(GetHomeDataLoadingState());
+      _productsHome = await ProductsService().getAllProductsByMainCategoryId(mainCategoryId);
+      _cities = [];
+      for(ProductModel product in _productsHome){
+        List list = await CityServices().getCityByCityId(product.cityId as int);
+        _cities.add(list.first);
+      }
+      emit(GetHomeDataSuccessState());
+    } on Exception catch (e) {
+      emit(InternetDisconnectedState());
+      print('Error $e');
+    }
   }
 
   /// * getter
@@ -254,5 +296,60 @@ class AppCubit extends Cubit<AppStates> {
   List<CategoryModel> get categories => _categories;
 
   List<PersistentBottomNavBarItem>? get navBarsItems => _navBarsItems;
+
+  DataModel? get dataModel => _dataModel;
+
+  void handlingToggleItemButton(int index) {
+    handleTap(index,'single');
+    // emit(HandlingToggleItemButtonState());
+  }
+  Set active = {true};
+  bool selectAll = true;
+  bool selectCategory = false;
+  void handleTap(index , String single) {
+    var list = active.toList();
+    if(list[0] != index){
+      active.contains(index) ? active.remove(index): active = {index, single};
+    }
+  }
+
+  void handlingToggleAllButton(){
+      if(active.contains('single')){
+        if(selectAll){
+          active = {true};
+        }
+        else{
+          selectAll = !selectAll;
+          active = {true};
+        }
+      }
+      else{
+        if(active.contains(true)){
+
+        }
+        else{
+          selectAll = !selectAll;
+          active = {selectAll};
+        }
+
+      }
+  }
+
+  void getUserInfo() {
+    try {
+      Map<String,dynamic> userMap = jsonDecode(getUserModel()!) as Map<String, dynamic>;
+      print('VIEW PROFILE SCREEN $userMap');
+      _dataModel = DataModel.fromJson(userMap);
+    } on Exception catch (e) {
+      print(
+        'ERROR =>>> $e',
+      );
+    }
+  }
+
+
+  String? getUserModel(){
+    return CashHelper.getString(key: 'user');
+  }
 
 }

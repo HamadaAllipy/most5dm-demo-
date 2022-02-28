@@ -8,9 +8,15 @@ class CityServices extends CityRepository {
   List<CityModel> _Cities = [];
 
   @override
-  Future<List<CityModel>> getAll() {
-    // TODO: implement getAll
-    throw UnimplementedError();
+  Future<List<CityModel>> getAll() async {
+    List<CityModel> _allCities = [];
+    Response? response = await DioHelper.get(endPoint: GET_ALL_CITY);
+    List<dynamic> list = response!.data;
+    for(var city in list){
+      _allCities.add(CityModel.fromJson(city));
+    }
+    print('ALL CITY ${_allCities.length}');
+    return _allCities;
   }
 
   @override

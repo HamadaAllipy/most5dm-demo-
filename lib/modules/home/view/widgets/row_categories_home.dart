@@ -17,18 +17,6 @@ class RowCategoriesHome extends StatefulWidget {
 class _RowCategoriesHomeState extends State<RowCategoriesHome> {
 
   List<MainCategoryModel> mainCategories = [];
-
-  bool selectAll = true;
-  bool selectCategory = false;
-  Set active = {true};
-  void _handleTap(index , String single) {
-    var list = active.toList();
-    if(list[0] != index){
-      active.contains(index) ? active.remove(index): active = {index, single};
-    }
-    setState(() {
-    });
-  }
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppStates>(
@@ -45,12 +33,12 @@ class _RowCategoriesHomeState extends State<RowCategoriesHome> {
               InkWell(
                 onTap: (){
                   appCubit.actionButtonAll();
-                  handlingToggleAllButton();
+                  appCubit.handlingToggleAllButton();
                 },
                 child: SizedBox(
                   height: context.height * 0.0518,
                   width: context.width * 0.142,
-                  child: active.contains(true)?
+                  child: appCubit.active.contains(true)?
                   Card(
                     elevation: 5,
                     color: AppColor.defaultColor,
@@ -98,9 +86,9 @@ class _RowCategoriesHomeState extends State<RowCategoriesHome> {
                         ///
                         appCubit.enableSearchOptionButtons(index);
                         appCubit.getProductsAfterSelectMainCategory(mainCategories[index].id as int);
-                        handlingToggleItemButton(index);
+                        appCubit.handlingToggleItemButton(index);
                       },
-                      child: _buildItemMainCategory(mainCategories[index], index)
+                      child: _buildItemMainCategory(mainCategories[index], index, appCubit)
                     );
                   },
                   shrinkWrap: true,
@@ -115,12 +103,12 @@ class _RowCategoriesHomeState extends State<RowCategoriesHome> {
     );
   }
 
-  Widget _buildItemMainCategory(MainCategoryModel category, int index){
+  Widget _buildItemMainCategory(MainCategoryModel category, int index, AppCubit appCubit){
     return SizedBox(
       width: context.width * 0.2056,
       child: Card(
         elevation: 5,
-        color: active.contains(index)? AppColor.defaultColor: null,
+        color: appCubit.active.contains(index)? AppColor.defaultColor: null,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
@@ -132,7 +120,7 @@ class _RowCategoriesHomeState extends State<RowCategoriesHome> {
               category.iconUri.toString(),
               width: context.width * 0.128,
               height: context.height * 0.02,
-              color: active.contains(index)? Colors.white: null,
+              color: appCubit.active.contains(index)? Colors.white: null,
                 errorBuilder: (
                     BuildContext context,
                     Object error,
@@ -155,9 +143,10 @@ class _RowCategoriesHomeState extends State<RowCategoriesHome> {
             ),
             Text(
               category.name.toString(),
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: context.height * 0.0099,
-                color: active.contains(index)? Colors.white: null,
+                color: appCubit.active.contains(index)? Colors.white: null,
               ),
               maxLines: 1,
             ),
@@ -167,36 +156,6 @@ class _RowCategoriesHomeState extends State<RowCategoriesHome> {
     );
   }
 
-  void handlingToggleAllButton(){
-    setState(() {
-      if(active.contains('single')){
-        if(selectAll){
-          active = {true};
-        }
-        else{
-          selectAll = !selectAll;
-          active = {true};
-        }
-      }
-      else{
-        if(active.contains(true)){
-
-        }
-        else{
-          selectAll = !selectAll;
-          active = {selectAll};
-        }
-
-      }
-    });
-  }
-
-  void handlingToggleItemButton(index){
-    setState(() {
-      // categories[index].isSelected = !categories[index].isSelected;
-      _handleTap(index,'single');
-    });
-  }
 
   Widget _buildRowMainCategoriesShimmer() {
     return Row(

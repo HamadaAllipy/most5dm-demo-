@@ -6,5 +6,6 @@ abstract class BrandRepository{
 
 
   Future<List<BrandModel>> getAllBrandByCategoryId(int id);
+  Future<BrandModel> getBrandById(int brandId);
 
 }

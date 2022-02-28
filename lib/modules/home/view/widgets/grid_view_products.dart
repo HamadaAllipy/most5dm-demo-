@@ -24,35 +24,36 @@ class _GridViewProductsState extends State<GridViewProducts> {
   @override
   Widget build(BuildContext context) {
     AppCubit appCubit = AppCubit.get(context);
-    return GridView.count(
-      shrinkWrap: true,
-      crossAxisCount: 2,
-      mainAxisSpacing: context.height * 0.017,
-      crossAxisSpacing: context.width * 0.037,
-      childAspectRatio: 0.75,
-      physics: const NeverScrollableScrollPhysics(),
-      children: appCubit.productsHome
-          .asMap()
-          .map(
-            (index, product) {
-              return MapEntry(
-                index,
-                _buildItemProduct(index, product),
-              );
-            },
-          )
-          .values
-          .toList(),
-    );
+    print('TAAAAAG@cities ${appCubit.cities.length}');
+    print('TAAAAAG#products ${appCubit.productsHome.length}');
+    return GridView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: appCubit.productsHome.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: context.height * 0.017,
+          crossAxisSpacing: context.width * 0.037,
+          childAspectRatio: 0.75,
+        ),
+        shrinkWrap: true,
+        itemBuilder: (context, index){
+      return _buildItemProduct(index, appCubit.productsHome[index]);
+    });
   }
 
   Widget _buildItemProduct(int index, ProductModel product){
     return Hero(
-      tag: product.name.toString(),
+      tag: product.name.toString()+ product.id.toString(),
       child: Scaffold(
         body: InkWell(
           onTap: (){
-            navigateToOutSideBottomNav(context: context, widget: ProductDetails(tag: product.name.toString()));
+            navigateToOutSideBottomNav(
+              context: context,
+              widget: ProductDetails(
+                productModel: product,
+                cityName: AppCubit.get(context).cities[index].name.toString(),
+              ),
+            );
           },
           child: Container(
             clipBehavior: Clip.antiAlias,
@@ -157,4 +158,5 @@ class _GridViewProductsState extends State<GridViewProducts> {
       ),
     );
   }
+
 }

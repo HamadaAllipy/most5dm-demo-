@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui' as ui;
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -56,6 +57,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return Form(
       key: formKey,
       child: CustomStatusBar(
+        brightness: Platform.isIOS? SystemUiOverlayStyle.dark
+        : SystemUiOverlayStyle.light,
         child: BackgroundImage(
           child: Padding(
             padding: EdgeInsetsDirectional.only(
@@ -67,6 +70,11 @@ class _LoginScreenState extends State<LoginScreen> {
               reverse: false,
               child: Column(
                 children: [
+                  // CupertinoNavigationBar(
+                  //   backgroundColor: CupertinoColors.white,
+                  //   // middle: middle,
+                  //   // trailing: trailing,
+                  // ),
                   const SizedBox(
                     width: double.infinity,
                   ),
@@ -209,35 +217,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: context.height * 0.001,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        getLang(context, 'by_logging'),
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF434343),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .button!
-                                .copyWith(
-                              fontSize: 12,
-                            )),
-                        child: Text(
-                          getLang(context, 'terms_of_use'),
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
@@ -268,7 +247,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ? null
               : cubit.valid
               ? const BuildIconValid()
-              : const BuildIconNotValid(),
+              : BuildIconNotValid(),
         );
       },
     );

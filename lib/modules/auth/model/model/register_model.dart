@@ -1,5 +1,6 @@
 class SendRegister {
   final String username;
+  final String fullName;
   final String email;
   final String phoneNumber;
   final String password;
@@ -7,6 +8,7 @@ class SendRegister {
 
   SendRegister({
     required this.username,
+    required this.fullName,
     required this.email,
     required this.phoneNumber,
     required this.password,
@@ -15,6 +17,7 @@ class SendRegister {
 
   Map<String, dynamic> toJson() => {
         'username': username,
+        'fullname': fullName,
         'email': email,
         'phoneNumber': phoneNumber,
         'password': password,
@@ -33,7 +36,9 @@ class RegisterModel{
   RegisterModel.fromJson(Map<String, dynamic> json){
     status = json['status'];
     message = json['message'];
-    data = RegisterData.fromJson(json['data']);
+    if(json['data'] != null){
+      data = RegisterData.fromJson(json['data']);
+    }
   }
 }
 
@@ -58,4 +63,15 @@ class RegisterData{
     token = json['token'];
     expiresOn = json['expiresOn'];
   }
+
+  Map<String , dynamic> toJson()=>{
+    'username': userName,
+    'phoneNumber': phoneNumber,
+    'email': email,
+    'paymentCard': paymentCard,
+    'picture': picture,
+    'roles': roles,
+    'token': token,
+    'expiresOn': expiresOn,
+  };
 }

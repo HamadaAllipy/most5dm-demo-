@@ -26,4 +26,15 @@ class BrandService extends BrandRepository{
     }
     return brands;
   }
+
+  @override
+  Future<BrandModel> getBrandById(int brandId) async{
+    Response? response = await DioHelper.get(
+      endPoint: GET_BRAND_BY_ID,
+      queryParameters: {'BrandId':brandId},
+    );
+    List<dynamic> list = response!.data;
+    return BrandModel.fromJson(list.first);
+  }
+
 }

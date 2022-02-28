@@ -29,6 +29,7 @@
   "send_code_again": "Send the code again",
   "change_password": "Change password",
   "new_password": "Enter a new password",
-  "confirm_new_password": "Confirm a new password"
-
+  "confirm_new_password": "Confirm a new password",
+  "full_name": "Full name",
+  "you_must_agree_terms": "You must first agree to the terms and conditions"
 }

@@ -33,4 +33,14 @@ class CategoryServices extends CategoryRepository {
     });
     return categoryByMainId;
   }
+
+  @override
+  Future<CategoryModel> getCategoryById(int idCategory)async{
+    Response? response = await DioHelper.get(
+      endPoint: GET_CATEGORY_BY_ID,
+      queryParameters: {'CategoryId':idCategory},
+    );
+    List<dynamic> list = response!.data;
+    return CategoryModel.fromJson(list.first);
+  }
 }

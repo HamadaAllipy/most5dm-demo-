@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:most5dm/components/cash_helper.dart';
 import 'package:most5dm/constants/end_points.dart';
 
 class DioHelper {
@@ -24,9 +25,23 @@ class DioHelper {
 
   static Future<Response?> postData({
     required String endPoint,
+    data,
+  }) async {
+    try {
+      return await _dio.post(endPoint, data: data);
+    } catch (error) {
+      print('Error when POST ${error.toString()}');
+      return null;
+    }
+  }
+  static Future<Response?> post({
+    required String endPoint,
     required Map<String, dynamic> data,
   }) async {
     try {
+      _dio.options.headers = {
+        'Authorization':'Bearer ${CashHelper.getString(key: 'token')}',
+      };
       return await _dio.post(endPoint, data: data);
     } catch (error) {
       print('Error when POST ${error.toString()}');
@@ -43,6 +58,21 @@ class DioHelper {
       return await _dio.patch(endPoint, data: data);
     } on Exception catch (error) {
       print('Error when PATCH ${error.toString()}');
+    }
+  }
+
+  static Future<Response?> delete({
+    required String endPoint,
+    Map<String, dynamic>? queryParameters,
+})async{
+    try {
+      return await _dio.delete(
+        endPoint,
+        queryParameters: queryParameters
+      );
+    } on Exception catch (e) {
+      print('Error when DELETE METHOD $e');
+      return null;
     }
   }
 

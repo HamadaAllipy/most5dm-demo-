@@ -314,41 +314,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                         phoneNumber: widget._dataModel.phoneNumber.toString(),
                                         password: '123456789'
                                       );
-                                      // //case one
-                                      // if (userNameController.text !=
-                                      //         widget._dataModel.userName &&
-                                      //     emailController.text !=
-                                      //         widget._dataModel.email &&
-                                      //     phoneController.text !=
-                                      //         widget._dataModel.phoneNumber &&
-                                      //     paymentCardController.text !=
-                                      //         widget._dataModel.paymentCard) {
-                                      //   AccountCubit.get(context).editProfile(
-                                      //       token:
-                                      //           widget._dataModel.token.toString(),
-                                      //       newUserName: userNameController.text,
-                                      //       newEmail: emailController.text,
-                                      //       newPayment: paymentCardController.text,
-                                      //       newPhoneNumber: phoneController.text);
-                                      // } else if (userNameController.text != widget._dataModel.userName &&
-                                      //     emailController.text != widget._dataModel.email &&
-                                      //     phoneController.text != widget._dataModel.phoneNumber &&
-                                      //     paymentCardController.text != widget._dataModel.paymentCard) {}
-                                      // if( userNameController.text != widget._dataModel.userName){
-                                      //   AccountCubit.get(context).editProfile(token: widget._dataModel.token.toString(),newUserName: userNameController.text);
-                                      // }
-                                      // // email =>
-                                      // if( emailController.text != widget._dataModel.email){
-                                      //   AccountCubit.get(context).editProfile(token: widget._dataModel.token.toString(),newEmail: emailController.text);
-                                      // }
-                                      // // phone number =>
-                                      // if( phoneController.text != widget._dataModel.phoneNumber){
-                                      //   AccountCubit.get(context).editProfile(token: widget._dataModel.token.toString(),newPhoneNumber: phoneController.text);
-                                      // }
-                                      // // payment =>
-                                      // if( paymentCardController.text != widget._dataModel.paymentCard){
-                                      //   AccountCubit.get(context).editProfile(token: widget._dataModel.token.toString(),newPayment: paymentCardController.text);
-                                      // }
                                     },
                                     child: Text(
                                       'حفظ التغيرات ',
@@ -372,6 +337,4 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     );
   }
 
-
-  void caseOne(){}
 }

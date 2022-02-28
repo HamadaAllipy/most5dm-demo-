@@ -1,18 +1,18 @@
 {
   "welcome": "مرحبا",
   "for_sell_all": "لبيع كل ماهو مستعمل",
-  "phone_number": "* رقم الموبايل",
-  "password": "* كلمة المرور",
-  "confirm_password": "* تأكيد كلمة المرور",
+  "phone_number": "رقم الموبايل",
+  "password": " كلمة المرور",
+  "confirm_password": " تأكيد كلمة المرور",
   "login": "تسجيل دخول",
   "forget_password": "هل نسيت كلمة السر؟",
   "have_Account": "ليس لديك حساب؟",
   "register_now": "سجل الان",
   "by_logging": "بتسجيل الدخول، فانك توافق علي ",
   "terms_of_use": "سياسة الشروط والاحكام",
-  "userName": "* أسم المستخدم",
+  "userName": "أسم المستخدم",
   "register": "تسجيل حساب جديد",
-  "email": "* البريد الاكتروني",
+  "email": "البريد الاكتروني",
   "payment_card": "رقم بطاقة الدفع",
   "already_have_ac": " لديك حساب بالفعل ؟",
   "required": " مطلوب",
@@ -29,6 +29,9 @@
   "send_code_again": "إرسال الكود مرة أخري",
   "change_password": "تغيير كلمة المرور ",
   "new_password": "أدخل كلمة المرور الجديدة",
-  "confirm_new_password": "تأكيد كلمه المرور الجديدة"
+  "confirm_new_password": "تأكيد كلمه المرور الجديدة",
+  "full_name": "الاسم بالكامل",
+  "you_must_agree_terms": "يجب موافقه علي سياسة الشروط اولا"
+
 
 }
