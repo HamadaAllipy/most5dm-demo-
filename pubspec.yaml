@@ -39,10 +39,19 @@ dependencies:
   like_button: ^2.0.4
   flutter_svg: ^1.0.0
   connectivity: ^3.0.6
-  path_provider: ^2.0.8
   image_picker: ^0.8.4+4
   device_preview: ^1.0.0
   fluttertoast: ^8.0.8
+  google_fonts_arabic: ^1.1.7
+  smooth_page_indicator: ^1.0.0+2
+  pin_code_fields: ^7.3.0
+  persistent_bottom_nav_bar: ^4.0.2
+  shimmer: ^2.0.0
+  auto_size_text: ^3.0.0
+  flutter_zoom_drawer: ^2.2.2+1
+  flutter_icons:
+  flutter_speed_dial: ^5.0.0+1
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -50,7 +59,15 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_launcher_icons: "^0.9.2"
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/most5dm.png"
+#  adaptive_icon_background: "#ffffff"
+#  adaptive_icon_foreground: "assets/images/most5dm.png"
+  remove_alpha_ios: true
+#  adaptive_icon_foreground: "#ffffff"
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -77,6 +94,7 @@ flutter:
     - assets/categories.json
     - assets/icon/
     - assets/test.json
+    - assets/terms/terms_and_condition.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -94,15 +112,39 @@ flutter:
     - family: CustomIcon
       fonts:
         - asset: assets/icon/CustomIcon.ttf
+
     - family: AppIcons
       fonts:
         - asset: assets/icon/AppIcons.ttf
+
+    - family: DoneIcon
+      fonts:
+        - asset: assets/icon/DoneIcon.ttf
+
     - family: Nunito
       fonts:
         - asset: assets/fonts/Nunito.ttf
+
     - family: Mada
       fonts:
         - asset: assets/fonts/Mada_Regular.ttf
+
+    - family: Roboto
+      fonts:
+        - asset: assets/font_2/Roboto-Regular.ttf
+
+    - family: Hesham
+      fonts:
+        - asset: assets/font_2/Hesham.ttf
+
+    - family: HeshamFostat
+      fonts:
+        - asset: assets/fonts/Hesham_Fostat.ttf
+
+    - family: Helvetica
+      fonts:
+        - asset: assets/font_2/Helvetica.ttf
+
     - family: Tajawal
       fonts:
         - asset: assets/fonts/Tajawal-Black.ttf
@@ -112,6 +154,7 @@ flutter:
         - asset: assets/fonts/Tajawal-Light.ttf
         - asset: assets/fonts/Tajawal-Medium.ttf
         - asset: assets/fonts/Tajawal-Regular.ttf
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

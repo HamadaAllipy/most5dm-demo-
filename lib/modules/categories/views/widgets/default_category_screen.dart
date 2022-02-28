@@ -82,14 +82,14 @@ class DefaultCategoryScreen extends StatelessWidget {
                       size: 18,
                     ),
                     onTap: () {
-                        navigateTo(
-                          context: context,
-                          widget: model?.end== null ? DefaultCategoryScreen(
-                            model: CategoriesModel.fromJson(
-                              model?.items![index],
-                            ),
-                          ): FinishScreen(collection: model?.items![index]['collection'],),
-                        );
+                        // navigateTo(
+                        //   context: context,
+                        //   widget: model?.end== null ? DefaultCategoryScreen(
+                        //     model: CategoriesModel.fromJson(
+                        //       model?.items![index],
+                        //     ),
+                        //   ): FinishScreen(collection: model?.items![index]['collection'],),
+                        // );
                       },
                   );
                 },

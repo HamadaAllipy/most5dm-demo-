@@ -1,65 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:most5dm/constants/app_colors.dart';
 import 'package:most5dm/constants/app_string.dart';
+import 'package:most5dm/constants/app_values.dart';
+import 'package:most5dm/layout/app_cubit.dart';
+import 'package:most5dm/layout/app_states.dart';
+import 'package:most5dm/shared/widgets/widgets.dart';
 
 class DisconnectedScreen extends StatelessWidget {
 
-  final String tryAgainScreen;
-  const DisconnectedScreen({Key? key, required this.tryAgainScreen,}) : super(key: key);
+  const DisconnectedScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var hSize = MediaQuery.of(context).size.height;
-    var wSize = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(
+              context.height * 0.026,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
-                  Icons.wifi,
-                  color: Colors.grey,
-                  size: 100,
-                ),
-                SizedBox(
-                  height: hSize * 0.03,
-                ),
-                const Text(
-                  'فشل الاتصال بالانترنت',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  'الرجاء التأكد من أن جهازك متصل بالانترنت والمحاولة مرة أخري',
-                ),
-                SizedBox(
-                  height: hSize * 0.10,
+                SvgPicture.asset(
+                  'assets/images/no_connection.svg',
                 ),
                 Container(
-                  color: AppColor.defaultColor,
+                  margin: EdgeInsets.symmetric(
+                    horizontal: context.width * 0.21,
+                  ),
                   width: double.infinity,
+                  height: context.height * 0.06,
+                  decoration: BoxDecoration(
+                      color: AppColor.defaultColor,
+                      borderRadius: BorderRadius.circular(12)),
                   child: TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamedAndRemoveUntil(tryAgainScreen, (route) => false);
+                      AppCubit.get(context).checkInternet();
                     },
-                    child: const Text(
+                    child: Text(
                       'حاول مرة أخري',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
+                      style: Theme.of(context).textTheme.button,
                     ),
                   ),
                 ),
-
               ],
             ),
           ),

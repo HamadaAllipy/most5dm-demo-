@@ -1,6 +1,12 @@
-import 'package:flutter/material.dart' show BuildContext;
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart' show BuildContext, TextEditingController;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:most5dm/components/cash_helper.dart';
+import 'package:most5dm/components/components.dart';
 import 'package:most5dm/components/dio_helper.dart';
+import 'package:most5dm/constants/app_string.dart';
 import 'package:most5dm/constants/end_points.dart';
 import 'package:most5dm/modules/auth/model/model/login_model.dart';
 import 'package:most5dm/modules/auth/model/model/register_model.dart';
@@ -13,6 +19,11 @@ class AuthCubit extends Cubit<AuthStates> {
   bool empty = true;
 
 
+
+  bool _isChecked = false;
+
+  bool get isChecked => _isChecked;
+
   AuthCubit() : super(InitialAuthState());
 
   static AuthCubit get(BuildContext context) => BlocProvider.of(context);
@@ -20,12 +31,12 @@ class AuthCubit extends Cubit<AuthStates> {
   void toggleObscure() {
     _isHide = !_isHide;
     emit(ToggleObscureAuthState(_isHide));
-    print('toggleObscure');
   }
 
   bool get isHide => _isHide;
 
   bool get valid => _valid;
+
 
   void loginWithPhoneNumber({
     required String phoneNumber,
@@ -33,70 +44,87 @@ class AuthCubit extends Cubit<AuthStates> {
   }) {
     SendLogin sendLogin = SendLogin(phoneNumber, password);
     emit(LoadingLoginState());
-    print('${sendLogin.toJson()}');
     DioHelper.postData(
       endPoint: LOGIN,
       data: sendLogin.toJson(),
     ).then((value) {
       LoginModel model = LoginModel.fromJson(value!.data);
-      print('status =${model.status}\n message ${model.message}');
-      if (model.status == 'True') {
-        emit(LoginSuccessState());
-      }
-      else if (model.status == 'Unauthorized') {
+      if (model.status == AppString.TRUE) {
+        CashHelper.toCash(key: AppString.TOKEN, value: model.data!.token.toString());
+        CashHelper.toCash(key: 'user', value: jsonEncode(model.data!.toJson()));
+        emit(LoginSuccessState(model));
+      } else if (model.status == AppString.UNAUTHORIZED) {
         emit(LoginErrorState(model.message.toString()));
-      }
-      else if (model.status == 'Error') {
+      } else if (model.status == AppString.ERROR) {
         emit(LoginErrorState(model.message.toString()));
+      } else {
+        showToast(AppString.UNKNOWN);
       }
-      else {
-        print('??????????');
-      }
+    }).catchError((onError){
+      emit(LoginErrorState(onError.toString()));
     });
   }
 
   void register({
+    required String userName,
     required String fullName,
     required String phoneNumber,
     required String email,
     required String password,
     required String confirmPassword,
-    required String paymentCard,
   }) async {
     emit(LoadingRegisterState());
     SendRegister sendRegister = SendRegister(
-      username: 'hamada mohamed seif',
-      email: 'hamada.devlop@gmail.com',
-      phoneNumber: '01141403984',
-      paymentCard: '123456789',
-      password: '123456789',
-      confirmPassword: '123456789',
+      username: userName,
+      fullName: fullName,
+      email: email,
+      phoneNumber: phoneNumber,
+      password: password,
+      confirmPassword: password,
     );
-    DioHelper.postData(endPoint: REGISTER, data: sendRegister.toJson()).then((
-        value) {
-      emit(RegisterSuccessState());
-      print(value!.data);
+    print('sendRegister ${sendRegister.toJson()}');
+    DioHelper.postData(endPoint: REGISTER, data: sendRegister.toJson(),)
+        .then((value) {
+      RegisterModel registerModel = RegisterModel.fromJson(value!.data);
+      if (registerModel.status == 'True') {
+        CashHelper.toCash(key: AppString.TOKEN, value: registerModel.data!.token.toString());
+        CashHelper.toCash(key: 'user', value: jsonEncode(registerModel.data!.toJson()));
+        empty = true;
+        emit(RegisterSuccessState());
+      } else {
+        emit(RegisterErrorState(registerModel.message.toString()));
+      }
     }).catchError((e) {
+      print('error{}{}{}{}{} $e');
       emit(RegisterErrorState(e.toString()));
     });
   }
 
-  validation(String value) {
-    if(value.isEmpty){
+  validationIcon(String value) {
+    if (value.isEmpty) {
       empty = true;
-      emit(fieldIsEmptyState());
+      emit(FieldIsEmptyState());
     }
-    else if(value.isNotEmpty){
+    else if (value.isNotEmpty) {
       empty = false;
-    if(value.startsWith('05')){
-    _valid = true;
-    emit(ValidState());
-    }
-    else{
-    _valid = false;
+      if (value.startsWith('05')) {
+        _valid = true;
+        emit(ValidState());
+        if (value.length > 10) {
+          _valid = false;
+          emit(NotValidState());
+        }
+      } else {
+        _valid = false;
         emit(NotValidState());
       }
     }
-
   }
+
+  void toggleCheckBox(bool checked){
+    _isChecked = checked;
+    emit(ToggleCheckedBoxState());
+  }
+
+
 }

@@ -20,7 +20,9 @@ class LoginModel {
   LoginModel.fromJson(Map<String, dynamic> json){
     status = json['status'];
     message = json['message'];
-    data = DataModel.fromJson(json['data']);
+    if(json['data'] != null){
+      data = DataModel.fromJson(json['data']);
+    }
   }
 
   Map<String, dynamic> toJson()=>{
@@ -46,8 +48,20 @@ class DataModel {
     paymentCard = json['paymentCard'];
     picture = json['picture'];
     roles = json['roles'];
-    // roles = json['token'];
-    // roles = json['expiresOn'];
+    token = json['token'];
+    expiresOn = json['expiresOn'];
   }
+
+
+  Map<String , dynamic> toJson()=>{
+    'username': userName,
+    'phoneNumber': phoneNumber,
+    'email': email,
+    'paymentCard': paymentCard,
+    'picture': picture,
+    'roles': roles,
+    'token': token,
+    'expiresOn': expiresOn,
+  };
 
 }

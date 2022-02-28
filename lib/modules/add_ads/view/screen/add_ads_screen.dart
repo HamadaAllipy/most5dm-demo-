@@ -151,8 +151,8 @@ class AddAdsScreen extends StatelessWidget {
                       ],
                     ),
                     onPressed: () {
-                      navigateTo(
-                          context: context, widget: const AllCategoriesScreen());
+                      // navigateTo(
+                      //     context: context, widget: const AllCategoriesScreen());
                     },
                   ),
                 ),

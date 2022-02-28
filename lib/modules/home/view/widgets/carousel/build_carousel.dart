@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:most5dm/modules/add_ads/viewModel/cubit/add_ads_states.dart';
+import 'package:most5dm/shared/widgets/widgets.dart';
 
 class BuildCarousel extends StatelessWidget {
 
@@ -7,17 +9,15 @@ class BuildCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsetsDirectional.all(8.0),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(
-            image,
-          ),
-          fit: BoxFit.cover,
-        ),
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
-      ),
+    return builds();
+  }
+
+
+  Widget builds(){
+    return Image.network(
+      image,
+      fit: BoxFit.cover,
+      errorBuilder: buildErrorImage,
     );
   }
 }

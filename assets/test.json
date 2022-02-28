@@ -1,1 +1,54 @@
-[]
+[
+  {
+    "id": 15,
+    "name": "مرسيدس بنز اس كلاس",
+    "price": 168000,
+    "productShortDesc": "موديل 2015 ابيض من داخل بيج ",
+    "productLongDesc": "مرسيدس اس كلاس خليجي موديل 2015 ابيض من داخل بيج ماشيه 190 الف الموتر صبغ الوكالة بحالة الوكالة تشيكات الوكالة مطلوب 168 الف ريال وقابل لتفاوض",
+    "quantity": 1,
+    "brand": null,
+    "brandId": 7,
+    "city": null,
+    "cityId": 11,
+    "iconUri": "https://sayartii.com/uploads/cars/17592186318687/24da92c18c83e6372d2ca1fcfe4096acb411208b_med.jpg?sv=2019-07-07&sr=c&sig=8lOaQ9sjaZoAT4GUrbExVmNRzM8dQx%2BB6fMh96ZlyR4%3D&se=2022-02-06T20%3A37%3A09Z&sp=r"
+  },
+  {
+    "id": 16,
+    "name": "مرسيدس جي كلاس (جي واجن)",
+    "price": 547600,
+    "productShortDesc": "المساحة الداخلية ممتازة وواسعة حيث أصبحت أوسع من الجيل السابق بمقدا 15.1 سم للمقاعد الخلفية",
+    "productLongDesc": "طلقت شركة مرسيدس بنز سيارتها الفخمة والمميزة جي كلاس 2019 الجديدة في الأسواق العالمية في شهر يناير لعام 2019، حيث أتت هذه النسخة بطابع جمالي رياضي مميز مشابه للأجيال السابقة، كما حافظت شركة مرسيدس على تصميم جي واجن  المتعارف عليه (تصميم الصندوق)، وقامت شركة مرسيدس بتطوير أداء محرك جي كلاس الجديدة لعام 2019، كما وتتميز سيارة مرسيدس بنز جي كلاس 2019 بالتصميم الخارجي الذي يوضح لنا الغرض المصنوعة لأجله، وهو القوة المطلقة والأداء الرياضي المميز على جميع أنواع الطرق، منها الطرق الوعرة والرملية والجبلية وداخل المدينة ايضاً، حيث خصصت سيارة جي كلاس 2019 للطرق الوعرة بإمتياز، حيث أضافت شركة مرسيدس أنظمة تعليق جديدة للسيارة تمنحها الثبات والأداء على جميع أنواع الطرق الوعرة، وتعتبر سيارة جي كلاس من شركة مرسيدس سيارة كروس اوفر ذات الدفع الرباعي المميز بطابع الفخامة المطلقة المقدمة من شركة مرسيدس، وقامت شركة مرسيدس بفصل أنظمة التعليق الخلفية عن الأمامية لكي تعطي شعور أكبر بالراحة للسائق والركاب في داخل المركبة، ولتعطي أداء أقوى وأمتن على الطرق الوعرة والرملية",
+    "quantity": 1,
+    "brand": null,
+    "brandId": 7,
+    "city": null,
+    "cityId": 12,
+    "iconUri": "https://www.wmadaat.com/upload/09-2020/article/2019_mercedes-amg_WMADAAT.jpg?sv=2019-07-07&sr=c&sig=8lOaQ9sjaZoAT4GUrbExVmNRzM8dQx%2BB6fMh96ZlyR4%3D&se=2022-02-06T20%3A37%3A09Z&sp=r"
+  },
+  {
+    "id": 17,
+    "name": "Oppo A15",
+    "price": 1000,
+    "productShortDesc": "The new handset will feature 32 gigabytes of internal storage capacity",
+    "productLongDesc": "Chinese tech Oppo will bring A15 its new entry-level smartphone. Though it’s a smartphone yet the specs of the smartphone look quite impressive and will be one of the good assets for the market once Oppo A15 will launch. The new render of the smartphone only gives information about the rear of the smartphone. The render shows that the coming Oppo’s A15 will be having a triple rear camera that is kept in a square house along with an LED flash. The rear-mounted-fingerprint finger is also there that will be used for the security of the smartphone. Oppo A15’s has got a powerful chipset that will run the functions of this coming smartphone very smoothly. So, you will get an Octa-core processor. The Oppo sharp A15 will provide 3 gigabytes of RAM capacity which means that the handset will execute things in split seconds.",
+    "quantity": 2,
+    "brand": null,
+    "brandId": 18,
+    "city": null,
+    "cityId": 13,
+    "iconUri": "https://www.fonesquare.pk/wp-content/uploads/2021/03/Oppo-A15.jpg?sv=2019-07-07&sr=c&sig=8lOaQ9sjaZoAT4GUrbExVmNRzM8dQx%2BB6fMh96ZlyR4%3D&se=2022-02-06T20%3A37%3A09Z&sp=r"
+  },
+  {
+    "id": 18,
+    "name": "استون مارتن DB11 2018",
+    "price": 746240,
+    "productShortDesc": "محرك V8 سعة 4 لترات مع شاحن تيربو ثنائي من تطوير مرسيدس",
+    "productLongDesc": "استون مارتن DB11 هي  أحدث سيارة في سلسلة سيارات DB ، حيث تم إطلاق السيارة قبل عامين فقط كبديلة عن طراز DB9 الذي توقف إنتاجه ، وهي كذلك أول سيارة تقدمها الشركة البريطانية ضمن خطة “القرن الثاني” والتي تعتمد على قاعدة من الألومنيوم المقوى وتصاميم استثنائية معاصرة مع أحدث التقنيات التكنولوجية ، فيما تقول الشركة أن DB11 هي  أقوى وأسرع سيارة DB في تاريخ استون مارتن",
+    "quantity": 1,
+    "brand": null,
+    "brandId": 5,
+    "city": null,
+    "cityId": 11,
+    "iconUri": "https://arabgt.com/wp-content/uploads/2018/04/%D8%A7%D8%B3%D8%AA%D9%88%D9%86-%D9%85%D8%A7%D8%B1%D8%AA%D9%86-DB11-%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9.jpg?sv=2019-07-07&sr=c&sig=8lOaQ9sjaZoAT4GUrbExVmNRzM8dQx%2BB6fMh96ZlyR4%3D&se=2022-02-06T20%3A37%3A09Z&sp=r"
+  }
+]
