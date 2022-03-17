@@ -1,6 +1,6 @@
-# most5dm
+# Welcome to most5dm (demo)
 
-A new Flutter project.
+this an e-commerce app for android and ios , it is to sell used products
 
 ## Getting Started
 
