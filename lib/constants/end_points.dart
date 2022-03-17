@@ -1,6 +1,6 @@
 
 /// Base url
-const String BASE_URL = 'https://most5dm20220210193308.azurewebsites.net/api/';
+const String BASE_URL = 'https://most5dmapp.azurewebsites.net/api/';
 
 /// Authentication
 const String LOGIN = '/Auth/Login';
