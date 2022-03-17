@@ -1,6 +1,6 @@
 # Welcome to most5dm (demo)
 
-this an e-commerce app for android and ios , it is to sell used products
+this an e-commerce app for android and ios , it is to sells used products
 
 ## Getting Started
 
